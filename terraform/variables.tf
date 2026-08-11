@@ -23,3 +23,15 @@ variable "vm_admin_password" {
   type      = string
   sensitive = true
 }
+
+
+variable "linux_admin_username" {
+  type        = string
+  description = "Admin username for the Linux lab VM"
+  default     = "azureadmin"
+}
+
+variable "linux_ssh_public_key" {
+  type        = string
+  description = "SSH public key authorised for the Linux lab VM admin user"
+}
