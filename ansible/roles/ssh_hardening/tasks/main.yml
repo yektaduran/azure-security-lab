@@ -1,0 +1,16 @@
+---
+- name: Apply SSH daemon hardening settings
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?{{ item.key }}\\s"
+    line: "{{ item.key }} {{ item.value }}"
+    state: present
+    validate: "/usr/sbin/sshd -t -f %s"
+  loop:
+    - { key: "PermitRootLogin", value: "{{ ssh_permit_root_login }}" }
+    - { key: "MaxAuthTries", value: "{{ ssh_max_auth_tries }}" }
+    - { key: "X11Forwarding", value: "{{ ssh_x11_forwarding }}" }
+    - { key: "PasswordAuthentication", value: "{{ ssh_password_authentication }}" }
+    - { key: "PubkeyAuthentication", value: "{{ ssh_pubkey_authentication }}" }
+  become: true
+  notify: Restart sshd

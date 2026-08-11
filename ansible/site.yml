@@ -1,0 +1,7 @@
+---
+- name: Harden Linux lab hosts
+  hosts: linux_lab
+  become: true
+
+  roles:
+    - ssh_hardening
