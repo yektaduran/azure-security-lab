@@ -37,7 +37,7 @@ fact to match whatever the environment already did.
 | AZ-NET-002 | Every subnet has an NSG association | Not assessed |
 | AZ-NET-003 | NSG flow logs enabled | Deviation |
 | AZ-STO-001 | Storage public network access restricted | Deviation |
-| AZ-STO-002 | Shared key access disabled | Deviation |
+| AZ-STO-002 | Shared key access disabled | Pass |
 | AZ-STO-003 | Secure transfer and TLS 1.2 enforced | Pass |
 | AZ-STO-004 | Soft delete and versioning enabled on state storage | Pass |
 | AZ-VM-001 | Trusted Launch enabled | Pass |

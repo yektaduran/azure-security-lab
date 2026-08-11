@@ -126,15 +126,16 @@ az storage account show \
 Check output showing `false`, together with a successful `terraform plan`
 run from the same day proving the backend still functions without keys.
 
-**Status — deviation accepted**
+**Status — pass**
 
-`allowSharedKeyAccess = true`. Deliberately left enabled on 2026-08-10 as a
-fallback while the Entra ID path was being proven. The Terraform backend and
-all CLI operations to date have used Entra ID exclusively; no key has been
-retrieved or distributed.
+`allowSharedKeyAccess = false` as of 2026-08-11. Verified after the change
+that the Terraform backend still initialises and plans cleanly, and that
+container operations succeed with `--auth-mode login`. The account no longer
+accepts any shared-key credential; the keys still exist but are rejected.
 
-This deviation has no remaining justification and should be closed next.
-Disabling it is a single command and reversible.
+Previously an accepted deviation: shared key access was left enabled at
+account creation on 2026-08-10 as a fallback while the Entra ID path was
+being proven. No key was ever retrieved or distributed.
 
 ---
 

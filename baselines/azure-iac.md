@@ -175,16 +175,30 @@ terraform plan -out=tfplan
 Pipeline run history showing each stage's result, and the approval record
 tying an apply to the plan that was reviewed.
 
-**Status — deviation accepted**
+**Status — pass with a residual gap**
 
-`terraform fmt -check -recursive` and `terraform validate` both pass, run
-manually. No security scanner is configured and no pipeline exists — the
-repository is local, with no remote configured.
+GitHub Actions pipeline in place since 2026-08-11
+(`.github/workflows/terraform.yml`), authenticating to Azure through OIDC
+workload identity federation with no stored client secret. On every pull
+request it runs `terraform fmt -check`, `terraform validate` and `tfsec`,
+then produces a plan and posts it as a PR comment. Apply is gated behind
+manual `workflow_dispatch` and never runs on merge.
 
-The manual process currently satisfies the intent: every plan to date has
-been read before any apply, and doing so caught a proposed destroy-and-
-recreate of the VM that would have destroyed the lab. But the control
-depends entirely on operator discipline and produces no evidence trail.
+Verified end to end on 2026-08-11: a tag change went through PR, checks,
+plan review, merge without apply, and a deliberately triggered apply.
 
-To be closed by adding a GitHub Actions workflow with OIDC authentication,
-scanning, and plan-on-PR with manual approval before apply.
+**Residual gap**
+
+Two protective controls are configured but not enforced, both because
+GitHub applies neither to private repositories under the current plan:
+
+- A branch ruleset (`protect-main`) requiring pull requests and passing
+  status checks. Direct pushes to `main` remain possible, bypassing the
+  checks and the plan review entirely.
+- Environment deployment protection rules. The apply gate is therefore a
+  manual trigger, which records who ran it but involves no separate
+  approver.
+
+The control's intent is currently met by operator discipline alone.
+Enforcement requires either a Team organisation account or a public
+repository.
