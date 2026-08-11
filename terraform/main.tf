@@ -44,6 +44,7 @@ resource "azurerm_network_security_group" "vm" {
     Owner       = "Yekta"
     Project     = "Azure Security"
     Purpose     = "Sentinel-Training"
+    Reviewed    = "2026-08"
   }
 }
 resource "azurerm_log_analytics_workspace" "lab" {
