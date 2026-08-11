@@ -135,9 +135,9 @@ jobs:
   apply:
     name: Apply
     needs: plan
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    environment: production      # configure a required reviewer on this
+    
     defaults:
       run:
         working-directory: terraform
