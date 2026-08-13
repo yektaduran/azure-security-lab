@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Compliance report</title>
+<style>
+ body { font-family: system-ui, sans-serif; margin: 2rem; color: #222; }
+ table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+ th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid #ddd; }
+ th { background: #f4f4f4; }
+ .pass { color: #1a7f37; font-weight: 600; }
+ .fail { color: #b42318; font-weight: 600; }
+ .meta { color: #666; font-size: .9rem; }
+ code { background: #f6f8fa; padding: .1rem .3rem; border-radius: 3px; }
+</style></head><body>
+<h1>Azure baseline compliance report</h1>
+<p class="meta">Generated 2026-08-13T22:36:28+00:00 &middot;
+   4 checks &middot; 0 failed</p>
+<table>
+<tr><th>Control</th><th>Resource</th><th>Result</th><th>Detail</th><th>Evidence</th></tr>
+
+<tr>
+  <td><strong>AZ-STO-002</strong><br><span class="meta">Shared key access must be disabled</span></td>
+  <td>stseclabtfstate</td>
+  <td class="pass">PASS</td>
+  <td>Shared key access is disabled</td>
+  <td><code>{'allowSharedKeyAccess': False}</code></td>
+</tr>
+
+<tr>
+  <td><strong>AZ-STO-003</strong><br><span class="meta">Secure transfer and minimum TLS version</span></td>
+  <td>stseclabtfstate</td>
+  <td class="pass">PASS</td>
+  <td>HTTPS enforced, TLS 1.2 minimum, anonymous access disabled</td>
+  <td><code>{'enableHttpsTrafficOnly': True, 'minimumTlsVersion': <MinimumTlsVersion.TLS1_2: 'TLS1_2'>, 'allowBlobPublicAccess': False}</code></td>
+</tr>
+
+<tr>
+  <td><strong>AZ-NET-001</strong><br><span class="meta">Remote administration ports not exposed to the internet</span></td>
+  <td>NSG-Security-LNX-01</td>
+  <td class="pass">PASS</td>
+  <td>No inbound rule exposes SSH or RDP to the internet</td>
+  <td><code>{'offendingRules': []}</code></td>
+</tr>
+
+<tr>
+  <td><strong>AZ-NET-001</strong><br><span class="meta">Remote administration ports not exposed to the internet</span></td>
+  <td>NSG-Security-VM-01</td>
+  <td class="pass">PASS</td>
+  <td>No inbound rule exposes SSH or RDP to the internet</td>
+  <td><code>{'offendingRules': []}</code></td>
+</tr>
+
+</table>
+</body></html>

@@ -1,0 +1,6 @@
+azure-identity
+azure-mgmt-resource
+azure-mgmt-storage
+azure-mgmt-network
+azure-mgmt-compute
+jinja2

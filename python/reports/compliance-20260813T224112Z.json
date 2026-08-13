@@ -1,0 +1,48 @@
+[
+  {
+    "control_id": "AZ-STO-002",
+    "title": "Shared key access must be disabled",
+    "resource": "stseclabtfstate",
+    "passed": true,
+    "detail": "Shared key access is disabled",
+    "evidence": {
+      "allowSharedKeyAccess": false
+    },
+    "checked_at": "2026-08-13T22:41:09.622100+00:00"
+  },
+  {
+    "control_id": "AZ-STO-003",
+    "title": "Secure transfer and minimum TLS version",
+    "resource": "stseclabtfstate",
+    "passed": true,
+    "detail": "HTTPS enforced, TLS 1.2 minimum, anonymous access disabled",
+    "evidence": {
+      "enableHttpsTrafficOnly": true,
+      "minimumTlsVersion": "TLS1_2",
+      "allowBlobPublicAccess": false
+    },
+    "checked_at": "2026-08-13T22:41:10.255685+00:00"
+  },
+  {
+    "control_id": "AZ-NET-001",
+    "title": "Remote administration ports not exposed to the internet",
+    "resource": "NSG-Security-LNX-01",
+    "passed": true,
+    "detail": "No inbound rule exposes SSH or RDP to the internet",
+    "evidence": {
+      "offendingRules": []
+    },
+    "checked_at": "2026-08-13T22:41:12.405740+00:00"
+  },
+  {
+    "control_id": "AZ-NET-001",
+    "title": "Remote administration ports not exposed to the internet",
+    "resource": "NSG-Security-VM-01",
+    "passed": true,
+    "detail": "No inbound rule exposes SSH or RDP to the internet",
+    "evidence": {
+      "offendingRules": []
+    },
+    "checked_at": "2026-08-13T22:41:12.405838+00:00"
+  }
+]
