@@ -1,0 +1,58 @@
+name: Compliance
+
+on:
+  schedule:
+    - cron: '0 6 * * *'     # daily drift detection
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths: ['python/**', 'baselines/**']
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  checks:
+    name: Baseline compliance checks
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: python
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Azure login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run compliance checks
+        env:
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: python run_checks.py
+        continue-on-error: true
+        id: checks
+
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: compliance-report-${{ github.run_id }}
+          path: python/reports/
+          retention-days: 90
+
+      - name: Fail if any control failed
+        if: steps.checks.outcome == 'failure'
+        run: |
+          echo "One or more baseline controls failed — see the uploaded report."
+          exit 1
