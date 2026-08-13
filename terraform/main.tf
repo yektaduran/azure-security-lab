@@ -255,3 +255,43 @@ resource "azurerm_linux_virtual_machine" "lab" {
     Purpose     = "Linux-Hardening"
   }
 }
+resource "azurerm_virtual_machine_extension" "linux_ama" {
+  name                       = "AzureMonitorLinuxAgent"
+  virtual_machine_id         = azurerm_linux_virtual_machine.lab.id
+  publisher                  = "Microsoft.Azure.Monitor"
+  type                       = "AzureMonitorLinuxAgent"
+  type_handler_version       = "1.29"
+  auto_upgrade_minor_version = true
+}
+resource "azurerm_monitor_data_collection_rule" "linux_syslog" {
+  name                = "dcr-linux-auth"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+
+  destinations {
+    log_analytics {
+      workspace_resource_id = azurerm_log_analytics_workspace.lab.id
+      name                  = "law-destination"
+    }
+  }
+
+  data_flow {
+    streams      = ["Microsoft-Syslog"]
+    destinations = ["law-destination"]
+  }
+
+  data_sources {
+    syslog {
+      name           = "auth-facilities"
+      facility_names = ["auth", "authpriv"]
+      log_levels     = ["Info", "Notice", "Warning", "Error", "Critical", "Alert", "Emergency"]
+      streams        = ["Microsoft-Syslog"]
+    }
+  }
+}
+resource "azurerm_monitor_data_collection_rule_association" "linux_syslog" {
+  name                    = "dcra-linux-auth"
+  target_resource_id      = azurerm_linux_virtual_machine.lab.id
+  data_collection_rule_id = azurerm_monitor_data_collection_rule.linux_syslog.id
+}
+
