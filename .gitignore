@@ -6,3 +6,5 @@ crash.log
 
 __pycache__/
 *.pyc
+python/reports/
+reports/
