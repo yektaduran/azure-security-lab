@@ -54,6 +54,12 @@ fact to match whatever the environment already did.
 | AZ-IAC-001 | State backend uses identity-based access | Pass |
 | AZ-IAC-002 | No secrets committed to version control | Pass |
 | AZ-IAC-003 | IaC scanned for misconfiguration before apply | Deviation |
+| AZ-LNX-001 | SSH key-based auth, no direct root login | Pass |
+| AZ-LNX-002 | SSH attack surface reduced | Pass |
+| AZ-LNX-003 | Kernel network parameters tuned, single owner | Pass |
+| AZ-LNX-004 | Out-of-band recovery exists without weakening the host | Pass |
+| AZ-LNX-005 | Host firewall enforced independently of the NSG | Pass |
+| AZ-LNX-006 | Host activity recorded for investigation | Pass |
 
 ## Files
 
