@@ -202,3 +202,29 @@ GitHub applies neither to private repositories under the current plan:
 The control's intent is currently met by operator discipline alone.
 Enforcement requires either a Team organisation account or a public
 repository.
+
+
+**Update 2026-08-13 — compliance pipeline**
+
+A second pipeline (`.github/workflows/compliance.yml`) now runs the baseline
+checks in `python/` against the live subscription: daily at 06:00 UTC, on
+demand, and on any pull request touching `python/` or `baselines/`. It
+authenticates over OIDC with no stored credential, uploads the JSON and HTML
+reports as a build artifact retained for 90 days, and fails the build when
+any control fails.
+
+First run 2026-08-13: 10 checks, 4 failed — matching the deviations already
+recorded in `azure-vm.md`, which is the outcome a correctly wired checker
+should produce.
+
+This changes what the baselines are: documents that described the intended
+state now have checks that assert it on a schedule, with retained evidence.
+It does not affect the residual gap above — enforcement of *how changes
+arrive* is still unenforced; what is now enforced is *detection of what the
+environment actually looks like*.
+
+**Reporting gap:** the checker does not distinguish an accepted deviation
+from an unexpected failure. All four current failures are documented and
+accepted, but the build is red, and a red build that is expected to be red
+teaches people to ignore it. Reading the accepted status from the baseline
+documents and reporting those separately is the next improvement.

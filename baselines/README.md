@@ -6,7 +6,7 @@ that verify them and the evidence required to demonstrate compliance.
 ## Scope
 
 Everything in the `RG-Security-Lab-WestUS2` resource group of the lab
-subscription: virtual network and NSG, Windows Server 2025 virtual machine,
+subscription: Windows Server 2025 and Ubuntu 22.04 virtual machines, 
 Log Analytics workspace with Microsoft Sentinel, the Terraform state storage
 account, and the identity configuration governing access to all of them.
 
@@ -53,7 +53,7 @@ fact to match whatever the environment already did.
 | AZ-MON-003 | Log retention meets the defined minimum | Pass |
 | AZ-IAC-001 | State backend uses identity-based access | Pass |
 | AZ-IAC-002 | No secrets committed to version control | Pass |
-| AZ-IAC-003 | IaC scanned for misconfiguration before apply | Deviation |
+| AZ-IAC-003 | IaC scanned for misconfiguration before apply | Pass (residual gap) |
 | AZ-LNX-001 | SSH key-based auth, no direct root login | Pass |
 | AZ-LNX-002 | SSH attack surface reduced | Pass |
 | AZ-LNX-003 | Kernel network parameters tuned, single owner | Pass |
@@ -69,6 +69,7 @@ fact to match whatever the environment already did.
 - `azure-identity.md` — RBAC, privileged access, managed identities
 - `azure-monitoring.md` — logging, detection, retention
 - `azure-iac.md` — Terraform and pipeline security
+- `linux.md` — Linux host hardening (SSH, kernel, firewall, auditing)
 
 ## Review cadence
 

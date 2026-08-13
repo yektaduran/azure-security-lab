@@ -366,8 +366,11 @@ same day by moving the hardened settings into `00-hardening.conf`.
   playbook runs now require `--ask-become-pass`. Functional rather than a
   security weakness, but unattended runs are not currently possible.
 - Nothing prevents a future agent-driven change from recreating this
-  regression. Detection depends on the checks above being run, and no
-  scheduled verification exists yet.
+  regression.
+- A daily scheduled pipeline run now performs the automated portion of these
+  checks (see AZ-IAC-003). The manual verifications — the serial console test
+  and the password login attempt — remain unautomated, so an agent-driven
+  regression that only affects those would still go unnoticed.
 
 ---
 
