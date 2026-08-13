@@ -512,10 +512,17 @@ intrusion — and this host's recovery path is a serial console that a halted
 machine does not offer. Growth is bounded instead by `max_log_file` and
 `num_logs` to roughly 160 MB against a 30 GB disk.
 
-**Gap**
+**Gap — partially closed 2026-08-13**
 
-No audit rules beyond the distribution defaults have been defined, so
-file-integrity and command-execution events specific to this environment are
-not captured. Records are also local only; forwarding them to the Log
-Analytics workspace alongside the Windows host's security events would place
-Linux activity under the same detections. Both are outstanding.
+Authentication records now leave the host. The Azure Monitor Agent forwards
+the `auth` and `authpriv` syslog facilities to `LAW-Security-Lab` through
+`dcr-linux-auth`, so SSH sessions and privilege escalation on this host are
+queryable alongside the Windows security events and survive the loss of the
+machine. Verified in the `Syslog` table the same day.
+
+Two parts remain open. The forwarding covers syslog rather than `auditd`'s
+own records, so file-integrity and command-execution events written to
+`/var/log/audit/audit.log` stay local; closing that needs the audisp syslog
+plugin and a decision about the ingest volume it would add. And no analytics
+rule yet consumes this data, so the events are retained and searchable but
+nothing alerts on them — collection without detection.
