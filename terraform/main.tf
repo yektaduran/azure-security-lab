@@ -217,7 +217,7 @@ resource "azurerm_linux_virtual_machine" "lab" {
   computer_name       = "vm-lnx-lab-01"
   location            = var.location
   resource_group_name = var.resource_group_name
-  size                = "Standard_B1s"
+  size                = "Standard_B2pls_v2"
   admin_username      = var.linux_admin_username
 
   network_interface_ids = [azurerm_network_interface.linux.id]
@@ -238,7 +238,7 @@ resource "azurerm_linux_virtual_machine" "lab" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts-gen2"
+    sku       = "22_04-lts-arm64"
     version   = "latest"
   }
 
