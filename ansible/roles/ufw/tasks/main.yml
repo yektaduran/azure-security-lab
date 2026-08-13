@@ -1,0 +1,50 @@
+---
+- name: Install ufw
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+  become: true
+
+# ufw applies /etc/ufw/sysctl.conf on every reload, which silently overrides
+# the kernel parameters managed by the sysctl_hardening role. Kernel tuning
+# belongs to one owner; ufw keeps the firewall rules only.
+- name: Stop ufw from managing kernel parameters
+  ansible.builtin.lineinfile:
+    path: /etc/default/ufw
+    regexp: "^IPT_SYSCTL="
+    line: "IPT_SYSCTL="
+    state: present
+  become: true
+  notify: Reload ufw
+
+# Allow rules first. If the firewall is enabled before SSH is permitted,
+# the control node loses its connection mid-play.
+- name: Allow required inbound traffic
+  community.general.ufw:
+    rule: allow
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    from_ip: "{{ item.from }}"
+    comment: "{{ item.comment }}"
+  loop: "{{ ufw_allowed_rules }}"
+  become: true
+
+- name: Set default policies
+  community.general.ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+  loop:
+    - { direction: incoming, policy: "{{ ufw_default_incoming }}" }
+    - { direction: outgoing, policy: "{{ ufw_default_outgoing }}" }
+  become: true
+
+- name: Set logging level
+  community.general.ufw:
+    logging: "{{ ufw_logging }}"
+  become: true
+
+# Enable last, once the allow rules are already in place.
+- name: Enable ufw
+  community.general.ufw:
+    state: enabled
+  become: true

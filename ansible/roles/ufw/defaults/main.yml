@@ -1,0 +1,7 @@
+---
+ufw_default_incoming: deny
+ufw_default_outgoing: allow
+ufw_logging: low
+
+ufw_allowed_rules:
+  - { port: 22, proto: tcp, from: "{{ admin_source_ip }}", comment: "SSH from admin IP" }

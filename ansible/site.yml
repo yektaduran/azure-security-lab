@@ -5,3 +5,6 @@
 
   roles:
     - ssh_hardening
+    - sysctl_hardening
+    - auditd
+    - ufw

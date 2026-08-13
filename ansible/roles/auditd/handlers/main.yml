@@ -1,0 +1,5 @@
+---
+- name: Restart auditd
+  ansible.builtin.command: systemctl restart auditd
+  become: true
+  changed_when: true

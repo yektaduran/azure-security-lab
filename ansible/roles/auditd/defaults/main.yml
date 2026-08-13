@@ -1,0 +1,10 @@
+---
+auditd_packages:
+  - audispd-plugins
+
+auditd_max_log_file: 32
+auditd_num_logs: 5
+auditd_max_log_file_action: rotate
+auditd_space_left_action: syslog
+auditd_admin_space_left_action: syslog
+auditd_disk_full_action: syslog
