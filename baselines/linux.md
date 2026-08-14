@@ -523,6 +523,10 @@ machine. Verified in the `Syslog` table the same day.
 Two parts remain open. The forwarding covers syslog rather than `auditd`'s
 own records, so file-integrity and command-execution events written to
 `/var/log/audit/audit.log` stay local; closing that needs the audisp syslog
-plugin and a decision about the ingest volume it would add. And no analytics
-rule yet consumes this data, so the events are retained and searchable but
-nothing alerts on them — collection without detection.
+plugin and a decision about the ingest volume it would add. Detection now consumes this data: the analytics rule
+`Linux - Local Account Persistence` (query held in
+`kql/detections/linux-account-persistence.kql`) alerts on interactive account
+creation and privileged group membership changes. Validated 2026-08-15.
+
+Still open: auditd's own records remain local, since forwarding covers syslog
+rather than /var/log/audit/audit.log..

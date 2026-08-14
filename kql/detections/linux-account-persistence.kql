@@ -1,0 +1,51 @@
+// AZ-DET-LNX-001 — Local account persistence on Linux hosts
+//
+// Detects an interactive local account being created, or an existing account
+// being added to a privileged group. Together these are the two halves of the
+// most common persistence pattern on a compromised Linux host.
+//
+// MITRE ATT&CK: T1136.001 (Create Account: Local Account),
+//               T1098 (Account Manipulation)
+// Data source:  Syslog, facilities auth and authpriv, via dcr-linux-auth
+// Entities:     Account, Host
+//
+// Tuning notes:
+//   - Service accounts are excluded by UID < 1000 AND a non-interactive shell.
+//     Both conditions are required, since an attacker can choose a low UID.
+//   - usermod writes two records per change; the "shadow group" duplicate is
+//     dropped so one action produces one result.
+//   - Only privileged target groups are matched, not the word "sudo" appearing
+//     anywhere in the message.
+//
+// Validated 2026-08-14 by creating testattacker (uid 1001, /bin/bash) and
+// adding it to sudo — both halves fired, no false positives from the AMA
+// service accounts.
+let lookback = 7d;
+let AccountCreation =
+    Syslog
+    | where TimeGenerated > ago(lookback)
+    | where ProcessName == "useradd"
+    | where SyslogMessage startswith "new user:"
+    | extend NewAccount = extract(@"name=([^,]+)", 1, SyslogMessage)
+    | extend NewUid     = toint(extract(@"UID=(\d+)", 1, SyslogMessage))
+    | extend NewShell   = extract(@"shell=([^,]+)", 1, SyslogMessage)
+    | where NewUid >= 1000
+        or (NewShell !endswith "nologin" and NewShell != "/bin/false")
+    | extend Activity = "Interactive account created",
+             Detail   = strcat("account=", NewAccount, " uid=", NewUid, " shell=", NewShell)
+    | project TimeGenerated, Computer, Account = NewAccount, Activity, Detail, SyslogMessage;
+let PrivilegedGroupChange =
+    Syslog
+    | where TimeGenerated > ago(lookback)
+    | where ProcessName in ("usermod", "gpasswd")
+    | where SyslogMessage startswith "add '"
+    | where SyslogMessage !contains "shadow group"
+    | extend Account = extract(@"add '([^']+)'", 1, SyslogMessage)
+    | extend TargetGroup = extract(@"to group '([^']+)'", 1, SyslogMessage)
+    | where TargetGroup in ("sudo", "admin", "wheel", "root", "adm")
+    | extend Activity = "Account added to a privileged group",
+             Detail   = strcat("account=", Account, " group=", TargetGroup)
+    | project TimeGenerated, Computer, Account, Activity, Detail, SyslogMessage;
+AccountCreation
+| union PrivilegedGroupChange
+| order by TimeGenerated desc
