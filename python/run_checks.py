@@ -2,23 +2,23 @@
 """Run baseline compliance checks against the Azure lab subscription."""
 
 import argparse
-import json
 import os
 import sys
 
 from azure.identity import DefaultAzureCredential
+from azure.mgmt.compute import ComputeManagementClient
+from azure.mgmt.network import NetworkManagementClient
 from azure.mgmt.storage import StorageManagementClient
 
-from checks.storage import check_shared_key_access
-from azure.mgmt.network import NetworkManagementClient
+from checks.compute import (
+    check_encryption_at_host,
+    check_patch_mode,
+    check_trusted_launch,
+)
+from checks.governance import check_unmanaged_resource_groups
 from checks.network import check_admin_ports_not_internet_facing
-
+from checks.storage import check_secure_transfer, check_shared_key_access
 from report import write_reports
-from checks.storage import check_shared_key_access, check_secure_transfer
-from azure.mgmt.compute import ComputeManagementClient
-from checks.compute import check_trusted_launch, check_encryption_at_host, check_patch_mode
-...
-
 
 
 def parse_args():
@@ -43,22 +43,32 @@ def main():
         sys.exit("No subscription ID: pass --subscription-id or set AZURE_SUBSCRIPTION_ID")
 
     credential = DefaultAzureCredential()
-    storage_client = StorageManagementClient(credential, args.subscription_id)
 
     results = []
+
+    # Resource-group scoped checks
+    storage_client = StorageManagementClient(credential, args.subscription_id)
     results.extend(check_shared_key_access(storage_client, args.resource_group))
     results.extend(check_secure_transfer(storage_client, args.resource_group))
+
     network_client = NetworkManagementClient(credential, args.subscription_id)
     results.extend(check_admin_ports_not_internet_facing(network_client, args.resource_group))
+
     compute_client = ComputeManagementClient(credential, args.subscription_id)
     results.extend(check_trusted_launch(compute_client, args.resource_group))
     results.extend(check_encryption_at_host(compute_client, args.resource_group))
     results.extend(check_patch_mode(compute_client, args.resource_group))
+
+    # Subscription scoped checks — these see what the RG-scoped ones cannot
+    results.extend(check_unmanaged_resource_groups(credential, args.subscription_id))
+
     for r in results:
         status = "PASS" if r.passed else "FAIL"
         print(f"[{status}] {r.control_id}  {r.resource}  {r.detail}")
+
     json_path, html_path = write_reports(results)
     print(f"\nReports written: {json_path}, {html_path}")
+
     failed = sum(1 for r in results if not r.passed)
     print(f"\n{len(results)} checks, {failed} failed")
 
