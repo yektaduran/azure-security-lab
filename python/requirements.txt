@@ -1,6 +1,6 @@
-azure-identity
-azure-mgmt-resource
-azure-mgmt-storage
-azure-mgmt-network
-azure-mgmt-compute
-jinja2
+azure-identity==1.25.3
+azure-mgmt-compute==38.2.0
+azure-mgmt-network==31.0.1
+azure-mgmt-resource==26.0.0
+azure-mgmt-storage==25.1.0
+Jinja2==3.1.6

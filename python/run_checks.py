@@ -72,13 +72,11 @@ def main():
     deviations = sum(1 for r in results if r.status == Status.DEVIATION)
 
     print(f"\n{len(results)} checks, {blocking} blocking, {deviations} accepted deviations")
-
+    
+    json_path, html_path = write_reports(results, args.subscription_id)
+    print(f"\nReports written: {json_path}, {html_path}")
+    
     return 1 if blocking else 0  
-
-    
-    
-
-    
 
 
 if __name__ == "__main__":
