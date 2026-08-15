@@ -9,6 +9,9 @@ Everything in the `RG-Security-Lab-WestUS2` resource group of the lab
 subscription: Windows Server 2025 and Ubuntu 22.04 virtual machines, 
 Log Analytics workspace with Microsoft Sentinel, the Terraform state storage
 account, and the identity configuration governing access to all of them.
+Controls in the `AZ-GOV` family are the exception: they are subscription-scoped
+by design, because a resource outside the managed resource group is precisely
+what a resource-group-scoped baseline cannot see.
 
 ## Control format
 
@@ -60,6 +63,7 @@ fact to match whatever the environment already did.
 | AZ-LNX-004 | Out-of-band recovery exists without weakening the host | Pass |
 | AZ-LNX-005 | Host firewall enforced independently of the NSG | Pass |
 | AZ-LNX-006 | Host activity recorded for investigation | Pass |
+| AZ-GOV-001 | All resource groups in the subscription are managed by Terraform | Fail |
 
 ## Files
 
@@ -70,6 +74,7 @@ fact to match whatever the environment already did.
 - `azure-monitoring.md` — logging, detection, retention
 - `azure-iac.md` — Terraform and pipeline security
 - `linux.md` — Linux host hardening (SSH, kernel, firewall, auditing)
+- `azure-governance.md` — subscription-wide resource ownership
 
 ## Review cadence
 

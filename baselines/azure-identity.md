@@ -124,8 +124,8 @@ automation proving the reduced permission set is sufficient.
 
 **Status — pass**
 
-Two automation identities, both correctly scoped to the resource group
-rather than the subscription:
+Three automation identities, all scoped to the narrowest role their function
+requires:
 
 - `Azure Security Insights` (the Sentinel service principal) holds
   **Microsoft Sentinel Automation Contributor**, permitting it to trigger
@@ -133,8 +133,30 @@ rather than the subscription:
 - The `PB-Enrich-FailedLogon-Incident` Logic App uses a system-assigned
   managed identity holding **Microsoft Sentinel Responder**, sufficient to
   modify an incident. Contributor was deliberately not used.
+- `gh-actions-azure-security-lab` (appId c31b8284-f4dc-4411-8075-18112cdda06d)
+  authenticates over OIDC with no client secret and holds:
 
-No stored secrets are involved in either path.
+| Role | Scope | Why |
+|---|---|---|
+| Contributor | RG-Security-Lab-WestUS2 | `terraform apply` — write access confined to the managed resource group |
+| Storage Blob Data Contributor | stseclabtfstate | State file access over Entra ID; the account has no shared key enabled |
+| Reader | Subscription | AZ-GOV-001 must enumerate resource groups outside the managed one; a resource-group-scoped identity structurally cannot perform that check |
+
+The asymmetry in that last assignment is deliberate. Write access stays as
+narrow as the work requires; read access extends to whatever the audit must
+cover. A control's scope cannot be narrower than the thing it is auditing, or
+it reports clean by omission.
+
+No stored secrets are involved in any of the three paths.
+
+Verify with:
+
+```bash
+az role assignment list --assignee 6360628e-c500-454b-a8fc-fc5254e62e62 --all -o table
+```
+
+The `--all` flag is required; without it the command returns only assignments
+at the default scope and silently omits the others.
 
 ---
 
