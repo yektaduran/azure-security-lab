@@ -13,11 +13,12 @@ it to pass.
 
 | Directory | Contents |
 |---|---|
-| `terraform/` | Nine Azure resources under management, deployed through a GitHub Actions pipeline authenticating over OIDC with no stored secret. `tfsec` runs on every pull request. |
+| `terraform/` | Seventeen Azure resources under management, deployed through a GitHub Actions pipeline authenticating over OIDC with no stored secret. Every pull request runs `terraform fmt -check`, `terraform validate` and `tfsec` before producing a plan. |
 | `ansible/` | Four Linux hardening roles — SSH, kernel parameters, auditd, host firewall — applied from a WSL control node. |
 | `baselines/` | 28 configuration controls across eight documents, each in a fixed six-field format: rationale, applies to, check, remediation, evidence, status. |
 | `python/` | A compliance checker that evaluates the live subscription against those controls and writes timestamped JSON and HTML evidence. |
 | `kql/` | Sentinel detection queries, each carrying its MITRE mapping, tuning rationale and validation record. |
+| `.github/workflows/` | Two pipelines: `terraform.yml` validates and plans infrastructure changes with apply behind a manual trigger, `compliance.yml` runs the baseline checks. |
 
 ## Environment
 
@@ -98,9 +99,9 @@ passing checks is configured but not applied — GitHub does not enforce ruleset
 on private repositories under this plan. Direct pushes to `main` remain possible.
 The intent is currently met by operator discipline alone.
 
-**Dependencies are unpinned.** `requirements.txt` specifies no versions. A major
-release of an Azure SDK package has already broken an import once. The pipeline
-also runs Python 3.12 while local development is on 3.14.
+**Transitive dependencies are unpinned.** `requirements.txt` pins every direct
+dependency, but packages pulled in indirectly — `azure-core`, `msal` and others —
+float. A lock file or `pip-tools` would close this properly.
 
 **Vulnerability management is not covered here.** These baselines address
 misconfiguration. Vulnerability assessment on the Azure side requires Defender
