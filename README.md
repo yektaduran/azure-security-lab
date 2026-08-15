@@ -51,8 +51,8 @@ Results carry one of four statuses:
 Only `fail` and `error` break the build. A check that could not run has proven
 nothing, so it is never treated as a pass.
 
-The checks run on every push and pull request touching `python/` or `baselines/`,
-and daily at 06:00 UTC. Reports are retained as build artifacts for 90 days.
+The checks run on every push and pull request touching `python/`, `baselines/` or
+the workflow itself, and daily at 06:00 UTC. Reports are retained as build artifacts for 90 days.
 
 ---
 
