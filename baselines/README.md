@@ -64,6 +64,10 @@ fact to match whatever the environment already did.
 | AZ-LNX-005 | Host firewall enforced independently of the NSG | Pass |
 | AZ-LNX-006 | Host activity recorded for investigation | Pass |
 | AZ-GOV-001 | All resource groups in the subscription are managed by Terraform | Pass |
+| AZ-AI-001 | Generated code is validated against the environment | Pass |
+| AZ-AI-002 | Generated facts are confirmed at their source | Pass |
+| AZ-AI-003 | Sensitive material does not enter a prompt | Pass |
+| AZ-AI-004 | Data reaching an LLM in an automated path is untrusted | Not applicable |
 
 ## Files
 
@@ -75,6 +79,7 @@ fact to match whatever the environment already did.
 - `azure-iac.md` — Terraform and pipeline security
 - `linux.md` — Linux host hardening (SSH, kernel, firewall, auditing)
 - `azure-governance.md` — subscription-wide resource ownership
+- `ai-assisted-work.md` — use of language models in producing this repository
 
 ## Review cadence
 
