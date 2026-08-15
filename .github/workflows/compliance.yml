@@ -7,6 +7,15 @@ on:
   pull_request:
     branches: [main]
     paths: ['python/**', 'baselines/**']
+    push:
+    branches: [main]
+    paths: ['python/**', 'baselines/**']
+  pull_request:
+    branches: [main]
+    paths: ['python/**', 'baselines/**']
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 permissions:
   id-token: write
