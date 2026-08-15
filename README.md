@@ -107,6 +107,12 @@ misconfiguration. Vulnerability assessment on the Azure side requires Defender
 for Servers, which is a paid plan and deliberately left disabled; that work is
 being done separately.
 
+**Sentinel incidents do not notify anyone.** Defender for Cloud alerts reach an
+email address; Sentinel incidents are only visible in the portal. The Logic Apps
+email connectors require a work or school account, which this tenant does not
+have. An Azure Monitor action group over the `SecurityIncident` table would work,
+but sits outside the Sentinel automation chain.
+
 **Two controls are unassessed.** MFA enforcement cannot be evidenced until Entra
 ID sign-in logs are forwarded to the workspace, and subnet NSG association has
 not been checked.
