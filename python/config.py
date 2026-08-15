@@ -37,3 +37,13 @@ PLATFORM_MANAGED_RESOURCE_GROUPS = [
 PLATFORM_MANAGED_RESOURCE_GROUPS_LOWER = {
     rg.lower() for rg in PLATFORM_MANAGED_RESOURCE_GROUPS
 }
+# Deviations accepted and documented in baselines/. Each entry is a
+# (control_id, resource) pair. Marking them here rather than inside the check
+# keeps the check honest: it still reports the resource as non-compliant, and
+# the acceptance is a separate, reviewable decision recorded in one place.
+ACCEPTED_DEVIATIONS = {
+    ("AZ-VM-001", "vm-lnx-lab-01"),   # Trusted Launch not enabled at deploy time
+    ("AZ-VM-003", "vm-lnx-lab-01"),   # encryption at host — lab deviation
+    ("AZ-VM-003", "vm-sec-lab-01"),   # encryption at host — lab deviation
+    ("AZ-VM-005", "vm-lnx-lab-01"),   # ImageDefault patch mode
+}

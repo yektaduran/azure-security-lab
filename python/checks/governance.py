@@ -6,9 +6,10 @@ RG-Security-Lab-WestUS2; anything else in the subscription is unmanaged by
 definition and nobody is auditing it.
 """
 
+from azure.core.exceptions import HttpResponseError
 from azure.mgmt.resource.resources import ResourceManagementClient
 
-from checks.base import CheckResult
+from checks.base import CheckResult, Status
 from config import (
     MANAGED_RESOURCE_GROUPS,
     MANAGED_RESOURCE_GROUPS_LOWER,
@@ -24,8 +25,21 @@ def check_unmanaged_resource_groups(credential, subscription_id) -> list[CheckRe
 
     results: list[CheckResult] = []
     findings = 0
-
-    for rg in client.resource_groups.list():
+    try:
+        groups = list(client.resource_groups.list())
+    except HttpResponseError as exc:
+        return [
+            CheckResult(
+                control_id=CONTROL_ID,
+                title=TITLE,
+                resource=subscription_id,
+                passed=False,
+                status=Status.ERROR,
+                detail=f"Could not enumerate resource groups: {exc.message}",
+                evidence={"classification": "error"},
+            )
+        ]
+    for rg in groups:
         name_lower = rg.name.lower()
 
         if name_lower in MANAGED_RESOURCE_GROUPS_LOWER:

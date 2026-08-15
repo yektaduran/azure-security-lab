@@ -63,7 +63,7 @@ fact to match whatever the environment already did.
 | AZ-LNX-004 | Out-of-band recovery exists without weakening the host | Pass |
 | AZ-LNX-005 | Host firewall enforced independently of the NSG | Pass |
 | AZ-LNX-006 | Host activity recorded for investigation | Pass |
-| AZ-GOV-001 | All resource groups in the subscription are managed by Terraform | Fail |
+| AZ-GOV-001 | All resource groups in the subscription are managed by Terraform | Pass |
 
 ## Files
 
