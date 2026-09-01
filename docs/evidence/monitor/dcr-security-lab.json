@@ -1,0 +1,52 @@
+{
+  "dataFlows": [
+    {
+      "destinations": [
+        "la-2021719580"
+      ],
+      "streams": [
+        "Microsoft-Event"
+      ]
+    }
+  ],
+  "dataSources": {
+    "windowsEventLogs": [
+      {
+        "name": "eventLogsDataSource",
+        "streams": [
+          "Microsoft-Event"
+        ],
+        "xPathQueries": [
+          "Application!*[System[(Level=1 or Level=2 or Level=3)]]",
+          "System!*[System[(Level=1 or Level=2 or Level=3)]]"
+        ]
+      }
+    ]
+  },
+  "destinations": {
+    "logAnalytics": [
+      {
+        "name": "la-2021719580",
+        "workspaceId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1",
+        "workspaceResourceId": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab"
+      }
+    ]
+  },
+  "etag": "\"2000e1db-0000-0800-0000-6a7790830000\"",
+  "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/rg-security-lab-westus2/providers/Microsoft.Insights/dataCollectionRules/dcr-security-lab",
+  "immutableId": "dcr-ef0e100880d94027bf0cf8211e88cc1a",
+  "location": "westus2",
+  "name": "dcr-security-lab",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "rg-security-lab-westus2",
+  "systemData": {
+    "createdAt": "2026-08-07T23:08:04.9419626Z",
+    "createdBy": "yektaduran@hotmail.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2026-08-08T20:24:33.165022Z",
+    "lastModifiedBy": "yektaduran@hotmail.com",
+    "lastModifiedByType": "User"
+  },
+  "tags": {},
+  "type": "Microsoft.Insights/dataCollectionRules"
+}

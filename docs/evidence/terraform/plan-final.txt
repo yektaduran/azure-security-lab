@@ -1,0 +1,24 @@
+﻿Acquiring state lock. This may take a few moments...
+azurerm_resource_group.lab: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2]
+azurerm_public_ip.linux: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/publicIPAddresses/vm-lnx-lab-01-ip]
+azurerm_public_ip.vm: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/publicIPAddresses/vm-sec-lab-01-ip]
+azurerm_virtual_network.lab: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/virtualNetworks/VNET-Security-Lab-WestUS2]
+azurerm_log_analytics_workspace.lab: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab]
+azurerm_network_security_group.linux: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkSecurityGroups/NSG-Security-LNX-01]
+azurerm_network_security_group.vm: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkSecurityGroups/NSG-Security-VM-01]
+azurerm_subnet.security: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/virtualNetworks/VNET-Security-Lab-WestUS2/subnets/Security-Subnet]
+azurerm_monitor_data_collection_rule.linux_syslog: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Insights/dataCollectionRules/dcr-linux-auth]
+azurerm_network_interface.vm: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkInterfaces/vm-sec-lab-01932]
+azurerm_network_interface.linux: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkInterfaces/vm-lnx-lab-01-nic]
+azurerm_network_interface_security_group_association.linux: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkInterfaces/vm-lnx-lab-01-nic|/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkSecurityGroups/NSG-Security-LNX-01]
+azurerm_linux_virtual_machine.lab: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Compute/virtualMachines/vm-lnx-lab-01]
+azurerm_network_interface_security_group_association.vm: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkInterfaces/vm-sec-lab-01932|/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Network/networkSecurityGroups/NSG-Security-VM-01]
+azurerm_windows_virtual_machine.lab: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Compute/virtualMachines/vm-sec-lab-01]
+azurerm_monitor_data_collection_rule_association.linux_syslog: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Compute/virtualMachines/vm-lnx-lab-01/providers/Microsoft.Insights/dataCollectionRuleAssociations/dcra-linux-auth]
+azurerm_virtual_machine_extension.linux_ama: Refreshing state... [id=/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Compute/virtualMachines/vm-lnx-lab-01/extensions/AzureMonitorLinuxAgent]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+Releasing state lock. This may take a few moments...

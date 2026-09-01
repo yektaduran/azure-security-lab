@@ -92,6 +92,20 @@ them.
 
 ---
 
+### Observation: Secure Score measures visibility, not security
+
+Three score values, zero configuration changes on the resources themselves:
+
+| Date | Score | Cause |
+|------|-------|-------|
+| 2026-08-15 | 56% | Baseline on the free tier |
+| 2026-08-17 | 51% | Defender for Servers Plan 2 enabled: more assessment coverage surfaced more findings |
+| 2026-09-01 | 68% | VMs deallocated for days: assessments went stale or NotApplicable, score drifted up |
+
+More visibility lowered the score; less signal raised it. The score is a function of
+what the platform can see. Same lesson as the orphaned resource group finding (AZ-GOV-001).
+---
+
 ## Known gaps
 
 **Change control is unenforced.** A branch ruleset requiring pull requests and

@@ -1,0 +1,62 @@
+{
+  "dataFlows": [
+    {
+      "destinations": [
+        "law-destination"
+      ],
+      "streams": [
+        "Microsoft-Syslog"
+      ]
+    }
+  ],
+  "dataSources": {
+    "syslog": [
+      {
+        "facilityNames": [
+          "auth",
+          "authpriv"
+        ],
+        "logLevels": [
+          "Info",
+          "Notice",
+          "Warning",
+          "Error",
+          "Critical",
+          "Alert",
+          "Emergency"
+        ],
+        "name": "auth-facilities",
+        "streams": [
+          "Microsoft-Syslog"
+        ]
+      }
+    ]
+  },
+  "description": "",
+  "destinations": {
+    "logAnalytics": [
+      {
+        "name": "law-destination",
+        "workspaceId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1",
+        "workspaceResourceId": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab"
+      }
+    ]
+  },
+  "etag": "\"000076f9-0000-0800-0000-6a7e57520000\"",
+  "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Insights/dataCollectionRules/dcr-linux-auth",
+  "immutableId": "dcr-214505d397d843978198ea897585efc1",
+  "location": "westus2",
+  "name": "dcr-linux-auth",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "RG-Security-Lab-WestUS2",
+  "systemData": {
+    "createdAt": "2026-08-13T23:46:23.0905121Z",
+    "createdBy": "yektaduran@hotmail.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2026-08-13T23:46:23.0905121Z",
+    "lastModifiedBy": "yektaduran@hotmail.com",
+    "lastModifiedByType": "User"
+  },
+  "tags": {},
+  "type": "Microsoft.Insights/dataCollectionRules"
+}

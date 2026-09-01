@@ -1,0 +1,688 @@
+{
+  "value": [
+    {
+      "etag": "\"4e001822-0000-0100-0000-6a7f942e0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/ca43581c-0935-4cbb-9bf8-c0967fe2fe22",
+      "name": "ca43581c-0935-4cbb-9bf8-c0967fe2fe22",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/16/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "Persistence",
+            "PrivilegeEscalation"
+          ]
+        },
+        "classification": "BenignPositive",
+        "classificationComment": "Detection validation 2026-08-15: testattacker created with uid 1001 and /bin/bash, then added to sudo, deliberately to prove AZ-DET-LNX-001 fires. Both halves of the rule alerted and grouped into one incident. Account removed the same day",
+        "classificationReason": "SuspiciousButExpected",
+        "createdTimeUtc": "2026-08-14T21:52:54.21Z",
+        "description": "Detects creation of an interactive local account, or an existing account being added to a privileged group, on Linux hosts. MITRE T1136.001 and T1098",
+        "firstActivityTimeUtc": "2026-08-14T21:20:34Z",
+        "incidentNumber": 16,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/ca43581c-0935-4cbb-9bf8-c0967fe2fe22",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-14T21:20:47Z",
+        "lastModifiedTimeUtc": "2026-08-14T22:18:22.131001Z",
+        "owner": {
+          "assignedTo": "yektaduran@hotmail.com",
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "16",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/7b2ed346-f7ee-4580-9205-67d24727b9a3"
+        ],
+        "severity": "Medium",
+        "status": "Closed",
+        "title": "Linux - Local Account Persistence"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"140201ea-0000-0100-0000-6a79bbf00000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/927630e5-bd2d-4e56-a30d-74b1458faf31",
+      "name": "927630e5-bd2d-4e56-a30d-74b1458faf31",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 1,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/15/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-10T11:54:11.76Z",
+        "description": "Detected 10 failed logon attempts for user -\\test from 213.55.79.194",
+        "firstActivityTimeUtc": "2026-08-10T11:43:59Z",
+        "incidentNumber": 15,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/927630e5-bd2d-4e56-a30d-74b1458faf31",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-10T11:48:59Z",
+        "lastModifiedTimeUtc": "2026-08-10T11:54:24.3495056Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "15",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - -\\test on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"1502fa07-0000-0100-0000-6a79be4c0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/e83ac876-0a17-497e-a298-75073a5e5bc7",
+      "name": "e83ac876-0a17-497e-a298-75073a5e5bc7",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 2,
+          "bookmarksCount": 0,
+          "commentsCount": 1,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/14/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-10T11:49:07.52Z",
+        "description": "Detected 5 failed logon attempts for user -\\user from 213.55.79.194",
+        "firstActivityTimeUtc": "2026-08-10T11:38:59Z",
+        "incidentNumber": 14,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/e83ac876-0a17-497e-a298-75073a5e5bc7",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-10T11:58:59Z",
+        "lastModifiedTimeUtc": "2026-08-10T12:04:28.4496596Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "14",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - -\\user on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"1302c1e9-0000-0100-0000-6a79a5c90000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/0c354f6c-2f2e-4a20-9271-f9bc8d02f412",
+      "name": "0c354f6c-2f2e-4a20-9271-f9bc8d02f412",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/13/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "classification": "BenignPositive",
+        "classificationComment": "Auto-closed by automation rule: azureuser is a known lab admin account used for detection testing",
+        "classificationReason": "SuspiciousButExpected",
+        "createdTimeUtc": "2026-08-10T10:19:42.86Z",
+        "description": "Detected 8 failed logon attempts for user DESKTOP-BV8P0LD\\azureuser from ADMIN_IP_REDACTED",
+        "firstActivityTimeUtc": "2026-08-10T10:08:59Z",
+        "incidentNumber": 13,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/0c354f6c-2f2e-4a20-9271-f9bc8d02f412",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-10T10:13:59Z",
+        "lastModifiedTimeUtc": "2026-08-10T10:19:53.4418619Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "13",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Informational",
+        "status": "Closed",
+        "title": "Multiple Failed Logons - DESKTOP-BV8P0LD\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"14022616-0000-0100-0000-6a79a94a0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/7cd858e1-09cf-48a7-8faf-9d91d400511e",
+      "name": "7cd858e1-09cf-48a7-8faf-9d91d400511e",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 2,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/12/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-10T06:44:24.27Z",
+        "description": "Detected 10 failed logon attempts for user vm-sec-lab-01\\fakeuser from ::1",
+        "firstActivityTimeUtc": "2026-08-10T06:33:59Z",
+        "incidentNumber": 12,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/7cd858e1-09cf-48a7-8faf-9d91d400511e",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-10T10:28:59Z",
+        "lastModifiedTimeUtc": "2026-08-10T10:34:50.4891491Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "12",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - vm-sec-lab-01\\fakeuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ec016f94-0000-0100-0000-6a77b8d40000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/8c7323cf-447f-4e49-83ae-9ec2861dab95",
+      "name": "8c7323cf-447f-4e49-83ae-9ec2861dab95",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/11/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "InitialAccess",
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T23:16:29.41Z",
+        "description": "Account vm-sec-lab-01\\azureuser had 6 failed logons followed by a successful logon from ::1",
+        "firstActivityTimeUtc": "2026-08-08T22:11:17Z",
+        "incidentNumber": 11,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/8c7323cf-447f-4e49-83ae-9ec2861dab95",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T23:11:17Z",
+        "lastModifiedTimeUtc": "2026-08-08T23:16:29.41Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "11",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef"
+        ],
+        "severity": "High",
+        "status": "New",
+        "title": "Possible Brute Force Success - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ec011260-0000-0100-0000-6a77b6770000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/32cd2980-73da-4990-9a38-e88e84a905be",
+      "name": "32cd2980-73da-4990-9a38-e88e84a905be",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/10/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "InitialAccess",
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T23:06:26.36Z",
+        "description": "Account vm-sec-lab-01\\azureuser had 12 failed logons followed by a successful logon from ::1",
+        "firstActivityTimeUtc": "2026-08-08T22:01:17Z",
+        "incidentNumber": 10,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/32cd2980-73da-4990-9a38-e88e84a905be",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T23:01:17Z",
+        "lastModifiedTimeUtc": "2026-08-08T23:06:26.36Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "10",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef"
+        ],
+        "severity": "High",
+        "status": "New",
+        "title": "Possible Brute Force Success - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ec01f02c-0000-0100-0000-6a77b4220000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/7e8007e2-a7ae-4e0d-b1f5-1807266a1979",
+      "name": "7e8007e2-a7ae-4e0d-b1f5-1807266a1979",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/9/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "InitialAccess",
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:56:26.87Z",
+        "description": "Account vm-sec-lab-01\\azureuser had 12 failed logons followed by a successful logon from ::1",
+        "firstActivityTimeUtc": "2026-08-08T21:51:17Z",
+        "incidentNumber": 9,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/7e8007e2-a7ae-4e0d-b1f5-1807266a1979",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T22:51:17Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:56:26.87Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "9",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef"
+        ],
+        "severity": "High",
+        "status": "New",
+        "title": "Possible Brute Force Success - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ec01400e-0000-0100-0000-6a77b2d40000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/4f2de6c9-fdfd-4300-9696-a638cef7de1a",
+      "name": "4f2de6c9-fdfd-4300-9696-a638cef7de1a",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/8/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:50:53.9366667Z",
+        "description": "Detected 10 failed logon attempts for user vm-sec-lab-01\\fakeuser from ::1",
+        "firstActivityTimeUtc": "2026-08-08T22:40:35Z",
+        "incidentNumber": 8,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/4f2de6c9-fdfd-4300-9696-a638cef7de1a",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T22:45:35Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:50:53.9366667Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "8",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - vm-sec-lab-01\\fakeuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"eb0122f8-0000-0100-0000-6a77b1d60000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/1eeff8e4-2875-4b3b-bf35-ea3b972dff5c",
+      "name": "1eeff8e4-2875-4b3b-bf35-ea3b972dff5c",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/7/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "InitialAccess",
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:46:39.3066667Z",
+        "description": "Account vm-sec-lab-01\\azureuser had 12 failed logons followed by a successful logon from ::1",
+        "firstActivityTimeUtc": "2026-08-08T21:41:17Z",
+        "incidentNumber": 7,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/1eeff8e4-2875-4b3b-bf35-ea3b972dff5c",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T22:41:17Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:46:39.3066667Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "7",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef"
+        ],
+        "severity": "High",
+        "status": "New",
+        "title": "Possible Brute Force Success - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"eb01b3c4-0000-0100-0000-6a77af7e0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/25d6cac7-3cc8-482a-b1dc-4b1867dab8a8",
+      "name": "25d6cac7-3cc8-482a-b1dc-4b1867dab8a8",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/6/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "InitialAccess",
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:36:40.3633333Z",
+        "description": "Account vm-sec-lab-01\\azureuser had 12 failed logons followed by a successful logon from ::1",
+        "firstActivityTimeUtc": "2026-08-08T21:31:17Z",
+        "incidentNumber": 6,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/25d6cac7-3cc8-482a-b1dc-4b1867dab8a8",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T22:31:17Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:36:40.3633333Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "6",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef"
+        ],
+        "severity": "High",
+        "status": "New",
+        "title": "Possible Brute Force Success - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"eb01fb89-0000-0100-0000-6a77acf40000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/08cff69a-c1e4-4c0a-a7a8-48ae499c2754",
+      "name": "08cff69a-c1e4-4c0a-a7a8-48ae499c2754",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/5/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:25:51.3533333Z",
+        "description": "Detected 6 failed logon attempts for user vm-sec-lab-01\\azureuser from ::1",
+        "firstActivityTimeUtc": "2026-08-08T22:15:35Z",
+        "incidentNumber": 5,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/08cff69a-c1e4-4c0a-a7a8-48ae499c2754",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T22:20:35Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:25:51.3533333Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "5",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - vm-sec-lab-01\\azureuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ea01a1fa-0000-0100-0000-6a77a71c0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/fd0ec271-2d43-40a2-9ce1-bc7619f83a80",
+      "name": "fd0ec271-2d43-40a2-9ce1-bc7619f83a80",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/4/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T22:00:52.2033333Z",
+        "description": "Detected 10 failed logon attempts for user vm-sec-lab-01\\fakeuser from ::1",
+        "firstActivityTimeUtc": "2026-08-08T21:50:35Z",
+        "incidentNumber": 4,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/fd0ec271-2d43-40a2-9ce1-bc7619f83a80",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T21:55:35Z",
+        "lastModifiedTimeUtc": "2026-08-08T22:00:52.2033333Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "4",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - vm-sec-lab-01\\fakeuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"ea01d5dd-0000-0100-0000-6a77a5e40000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/621007e1-2bcc-48ca-a1ee-e35e6c472a85",
+      "name": "621007e1-2bcc-48ca-a1ee-e35e6c472a85",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/3/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T21:55:39.45Z",
+        "description": "Detected 10 failed logon attempts for user vm-sec-lab-01\\fakeuser from ::1",
+        "firstActivityTimeUtc": "2026-08-08T21:45:35Z",
+        "incidentNumber": 3,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/621007e1-2bcc-48ca-a1ee-e35e6c472a85",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T21:50:35Z",
+        "lastModifiedTimeUtc": "2026-08-08T21:55:39.45Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "3",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - vm-sec-lab-01\\fakeuser on vm-sec-lab-01"
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"e7018372-0000-0100-0000-6a7782090000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/e2c02c1a-1155-4d8c-b495-a99a1e5220dc",
+      "name": "e2c02c1a-1155-4d8c-b495-a99a1e5220dc",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/2/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T19:22:41.64Z",
+        "description": "Detected 5 failed logon attempts for user fakeuser from ::1 within a 5-minute window",
+        "firstActivityTimeUtc": "2026-08-08T19:10:00Z",
+        "incidentNumber": 2,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/e2c02c1a-1155-4d8c-b495-a99a1e5220dc",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T19:10:00Z",
+        "lastModifiedTimeUtc": "2026-08-08T19:22:41.64Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "2",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - _fakeuser on _vm-sec-lab-01 "
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    },
+    {
+      "etag": "\"e40112e1-0000-0100-0000-6a77688b0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/a5f33dcb-3069-46f6-a8c9-30c7057b7f1d",
+      "name": "a5f33dcb-3069-46f6-a8c9-30c7057b7f1d",
+      "properties": {
+        "additionalData": {
+          "alertProductNames": [
+            "Azure Sentinel"
+          ],
+          "alertsCount": 1,
+          "bookmarksCount": 0,
+          "commentsCount": 0,
+          "providerIncidentUrl": "https://security.microsoft.com/incident2/1/overview?tid=dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+          "tactics": [
+            "CredentialAccess"
+          ]
+        },
+        "createdTimeUtc": "2026-08-08T17:33:57.3533333Z",
+        "description": "Detected 5 failed logon attempts for user fakeuser from ::1 within a 5-minute window",
+        "firstActivityTimeUtc": "2026-08-08T12:40:00Z",
+        "incidentNumber": 1,
+        "incidentUrl": "https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/Incidents/a5f33dcb-3069-46f6-a8c9-30c7057b7f1d",
+        "labels": [],
+        "lastActivityTimeUtc": "2026-08-08T12:40:00Z",
+        "lastModifiedTimeUtc": "2026-08-08T17:33:57.3533333Z",
+        "owner": {
+          "assignedTo": null,
+          "email": null,
+          "objectId": null,
+          "userPrincipalName": null
+        },
+        "providerIncidentId": "1",
+        "providerName": "Microsoft XDR",
+        "relatedAnalyticRuleIds": [
+          "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+        ],
+        "severity": "Medium",
+        "status": "New",
+        "title": "Multiple Failed Logons - _fakeuser on _vm-sec-lab-01 "
+      },
+      "type": "Microsoft.SecurityInsights/Incidents"
+    }
+  ]
+}

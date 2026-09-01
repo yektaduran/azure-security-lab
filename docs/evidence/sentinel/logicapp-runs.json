@@ -1,0 +1,112 @@
+{
+  "value": [
+    {
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident/runs/08584152440227932776339823761CU27",
+      "name": "08584152440227932776339823761CU27",
+      "properties": {
+        "correlation": {
+          "clientKeywords": [
+            "{\"SentinelAutomationDepth\":\"0\"}"
+          ],
+          "clientTrackingId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1_15"
+        },
+        "endTime": "2026-08-10T11:54:24.4781978Z",
+        "outputs": {},
+        "startTime": "2026-08-10T11:54:22.6865669Z",
+        "status": "Succeeded",
+        "trigger": {
+          "correlation": {
+            "clientKeywords": [
+              "{\"SentinelAutomationDepth\":\"0\"}"
+            ],
+            "clientTrackingId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1_15"
+          },
+          "endTime": "2026-08-10T11:54:22.6835339Z",
+          "inputsLink": {
+            "contentHash": {
+              "algorithm": "md5",
+              "value": "gbjzZFaLNOGM30ifNR4dEA=="
+            },
+            "contentSize": 234,
+            "contentVersion": "gbjzZFaLNOGM30ifNR4dEA==",
+            "uri": "https://prod-29.westus2.logic.azure.com:443/workflows/c8cda7a9e9854629a8160c1148166a63/runs/08584152440227932776339823761CU27/contents/TriggerInputs?api-version=2016-06-01&se=2026-09-02T00%3A00%3A00.0000000Z&sp=%2Fruns%2F08584152440227932776339823761CU27%2Fcontents%2FTriggerInputs%2Fread&sv=1.0&sig=JfFj3BOxaU5ns6JffY2_qf7LaZVlDQcNbOSxcWPhaJE"
+          },
+          "name": "Microsoft_Sentinel_incident",
+          "originHistoryName": "08584152440227932776339823761CU27",
+          "outputsLink": {
+            "contentHash": {
+              "algorithm": "md5",
+              "value": "c4zEpQWqLYWm4gQ1FWS7FQ=="
+            },
+            "contentSize": 9217,
+            "contentVersion": "c4zEpQWqLYWm4gQ1FWS7FQ==",
+            "uri": "https://prod-29.westus2.logic.azure.com:443/workflows/c8cda7a9e9854629a8160c1148166a63/runs/08584152440227932776339823761CU27/contents/TriggerOutputs?api-version=2016-06-01&se=2026-09-02T00%3A00%3A00.0000000Z&sp=%2Fruns%2F08584152440227932776339823761CU27%2Fcontents%2FTriggerOutputs%2Fread&sv=1.0&sig=AMV-GOciQniaUi18OZcna6JT4kSQxEE-wp55oW8i-v4"
+          },
+          "startTime": "2026-08-10T11:54:22.6835339Z",
+          "status": "Succeeded"
+        },
+        "waitEndTime": "2026-08-10T11:54:22.6865669Z",
+        "workflow": {
+          "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident/versions/08584152455368514031",
+          "name": "08584152455368514031",
+          "type": "Microsoft.Logic/workflows/versions"
+        }
+      },
+      "type": "Microsoft.Logic/workflows/runs"
+    },
+    {
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident/runs/08584152443283578238974794173CU31",
+      "name": "08584152443283578238974794173CU31",
+      "properties": {
+        "correlation": {
+          "clientKeywords": [
+            "{\"SentinelAutomationDepth\":\"0\"}"
+          ],
+          "clientTrackingId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1_14"
+        },
+        "endTime": "2026-08-10T11:49:20.2738162Z",
+        "outputs": {},
+        "startTime": "2026-08-10T11:49:17.1216502Z",
+        "status": "Succeeded",
+        "trigger": {
+          "correlation": {
+            "clientKeywords": [
+              "{\"SentinelAutomationDepth\":\"0\"}"
+            ],
+            "clientTrackingId": "0f7e9f50-3b2d-4dbd-a109-2c717fb594a1_14"
+          },
+          "endTime": "2026-08-10T11:49:17.1119407Z",
+          "inputsLink": {
+            "contentHash": {
+              "algorithm": "md5",
+              "value": "gbjzZFaLNOGM30ifNR4dEA=="
+            },
+            "contentSize": 234,
+            "contentVersion": "gbjzZFaLNOGM30ifNR4dEA==",
+            "uri": "https://prod-29.westus2.logic.azure.com:443/workflows/c8cda7a9e9854629a8160c1148166a63/runs/08584152443283578238974794173CU31/contents/TriggerInputs?api-version=2016-06-01&se=2026-09-02T00%3A00%3A00.0000000Z&sp=%2Fruns%2F08584152443283578238974794173CU31%2Fcontents%2FTriggerInputs%2Fread&sv=1.0&sig=TZZU1sR2jMX7y-63wueIFBkww2X0jYsj2U7jyhpsqdU"
+          },
+          "name": "Microsoft_Sentinel_incident",
+          "originHistoryName": "08584152443283578238974794173CU31",
+          "outputsLink": {
+            "contentHash": {
+              "algorithm": "md5",
+              "value": "Tdt0q/xDThgi26dknyVcbQ=="
+            },
+            "contentSize": 8411,
+            "contentVersion": "Tdt0q/xDThgi26dknyVcbQ==",
+            "uri": "https://prod-29.westus2.logic.azure.com:443/workflows/c8cda7a9e9854629a8160c1148166a63/runs/08584152443283578238974794173CU31/contents/TriggerOutputs?api-version=2016-06-01&se=2026-09-02T00%3A00%3A00.0000000Z&sp=%2Fruns%2F08584152443283578238974794173CU31%2Fcontents%2FTriggerOutputs%2Fread&sv=1.0&sig=3xhm6-C-f-u9i0I2IVb2Q8_iiSXyC1SeJxYJ5Fcttb0"
+          },
+          "startTime": "2026-08-10T11:49:17.1119407Z",
+          "status": "Succeeded"
+        },
+        "waitEndTime": "2026-08-10T11:49:17.1216502Z",
+        "workflow": {
+          "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident/versions/08584152455368514031",
+          "name": "08584152455368514031",
+          "type": "Microsoft.Logic/workflows/versions"
+        }
+      },
+      "type": "Microsoft.Logic/workflows/runs"
+    }
+  ]
+}

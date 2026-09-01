@@ -1,0 +1,221 @@
+{
+  "extendedLocation": null,
+  "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident",
+  "identity": {
+    "principalId": "4abdb46f-80aa-4eb9-93fe-23126c2e1322",
+    "tenantId": "dd9ab8bc-26dc-4088-ad9e-120463c09de0",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+  },
+  "kind": null,
+  "location": "westus2",
+  "managedBy": null,
+  "name": "PB-Enrich-FailedLogon-Incident",
+  "plan": null,
+  "properties": {
+    "accessEndpoint": "https://prod-29.westus2.logic.azure.com:443/workflows/c8cda7a9e9854629a8160c1148166a63",
+    "changedTime": "2026-08-10T11:29:08.654366Z",
+    "createdTime": "2026-08-10T11:01:40.8345372Z",
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "actions": {
+        "Add_comment_to_incident_(V3)": {
+          "inputs": {
+            "body": {
+              "incidentArmId": "@triggerBody()?['object']?['id']",
+              "message": "<p class=\"editor-paragraph\">Automated enrichment<br>Incident: @{triggerBody()?['object']?['properties']?['title']}<br>Severity: @{triggerBody()?['object']?['properties']?['severity']}<br>Created: @{triggerBody()?['object']?['properties']?['createdTimeUtc']}</p>"
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+              }
+            },
+            "method": "post",
+            "path": "/Incidents/Comment"
+          },
+          "runAfter": {
+            "Entities_-_Get_Accounts": [
+              "Succeeded"
+            ]
+          },
+          "type": "ApiConnection"
+        },
+        "Entities_-_Get_Accounts": {
+          "inputs": {
+            "body": "@triggerBody()?['object']?['properties']?['relatedEntities']",
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+              }
+            },
+            "method": "post",
+            "path": "/entities/account"
+          },
+          "runAfter": {},
+          "type": "ApiConnection"
+        }
+      },
+      "contentVersion": "1.0.0.0",
+      "outputs": {},
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Microsoft_Sentinel_incident": {
+          "inputs": {
+            "body": {
+              "callback_url": "@{listCallbackUrl()}"
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+              }
+            },
+            "path": "/incident-creation"
+          },
+          "type": "ApiConnectionWebhook"
+        }
+      }
+    },
+    "endpointsConfiguration": {
+      "connector": {
+        "outgoingIpAddresses": [
+          {
+            "address": "52.183.78.157"
+          },
+          {
+            "address": "13.66.140.128/28"
+          },
+          {
+            "address": "13.66.145.96/27"
+          },
+          {
+            "address": "13.66.164.219"
+          },
+          {
+            "address": "20.83.220.208/28"
+          },
+          {
+            "address": "20.83.220.224/27"
+          },
+          {
+            "address": "20.115.169.20"
+          },
+          {
+            "address": "20.115.168.34"
+          }
+        ]
+      },
+      "workflow": {
+        "accessEndpointIpAddresses": [
+          {
+            "address": "57.153.7.252"
+          },
+          {
+            "address": "108.141.83.61"
+          },
+          {
+            "address": "57.153.7.252"
+          },
+          {
+            "address": "108.141.83.61"
+          },
+          {
+            "address": "4.155.163.32"
+          },
+          {
+            "address": "4.155.162.75"
+          },
+          {
+            "address": "4.155.164.225"
+          },
+          {
+            "address": "172.179.145.245"
+          },
+          {
+            "address": "4.149.68.5"
+          },
+          {
+            "address": "172.179.155.215"
+          },
+          {
+            "address": "4.149.68.80"
+          },
+          {
+            "address": "4.149.68.115"
+          }
+        ],
+        "outgoingIpAddresses": [
+          {
+            "address": "20.99.189.70"
+          },
+          {
+            "address": "20.72.243.225"
+          },
+          {
+            "address": "57.153.7.245"
+          },
+          {
+            "address": "108.141.83.46"
+          },
+          {
+            "address": "57.153.7.245"
+          },
+          {
+            "address": "108.141.83.46"
+          },
+          {
+            "address": "4.155.162.242"
+          },
+          {
+            "address": "4.155.163.91"
+          },
+          {
+            "address": "4.155.160.115"
+          },
+          {
+            "address": "172.179.145.85"
+          },
+          {
+            "address": "4.149.67.227"
+          },
+          {
+            "address": "172.179.155.210"
+          },
+          {
+            "address": "4.149.68.65"
+          },
+          {
+            "address": "4.149.68.107"
+          }
+        ]
+      }
+    },
+    "parameters": {
+      "$connections": {
+        "value": {
+          "azuresentinel": {
+            "connectionId": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Web/connections/azuresentinel-PB-Enrich-FailedLogon-Incident",
+            "connectionName": "azuresentinel-PB-Enrich-FailedLogon-Incident",
+            "connectionProperties": {
+              "authentication": {
+                "type": "ManagedServiceIdentity"
+              }
+            },
+            "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/providers/Microsoft.Web/locations/westus2/managedApis/azuresentinel"
+          }
+        }
+      }
+    },
+    "provisioningState": "Succeeded",
+    "state": "Enabled",
+    "version": "08584152455368514031"
+  },
+  "resourceGroup": "RG-Security-Lab-WestUS2",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.Logic/workflows"
+}

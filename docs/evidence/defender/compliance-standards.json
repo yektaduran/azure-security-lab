@@ -1,0 +1,28 @@
+{
+  "value": [
+    {
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/providers/Microsoft.Security/regulatoryComplianceStandards/Azure-CSPM",
+      "name": "Azure-CSPM",
+      "properties": {
+        "failedControls": 1,
+        "passedControls": 0,
+        "skippedControls": 0,
+        "state": "Failed",
+        "unsupportedControls": 0
+      },
+      "type": "Microsoft.Security/regulatoryComplianceStandards"
+    },
+    {
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/providers/Microsoft.Security/regulatoryComplianceStandards/Microsoft-cloud-security-benchmark",
+      "name": "Microsoft-cloud-security-benchmark",
+      "properties": {
+        "failedControls": 18,
+        "passedControls": 45,
+        "skippedControls": 0,
+        "state": "Failed",
+        "unsupportedControls": 22
+      },
+      "type": "Microsoft.Security/regulatoryComplianceStandards"
+    }
+  ]
+}

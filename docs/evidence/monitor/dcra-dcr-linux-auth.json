@@ -1,0 +1,9 @@
+[
+  {
+    "dataCollectionRuleId": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourcegroups/rg-security-lab-westus2/providers/microsoft.insights/datacollectionrules/dcr-linux-auth",
+    "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourcegroups/rg-security-lab-westus2/providers/microsoft.compute/virtualmachines/vm-lnx-lab-01/providers/microsoft.insights/datacollectionruleassociations/dcra-linux-auth",
+    "name": "dcra-linux-auth",
+    "resourceGroup": "rg-security-lab-westus2",
+    "type": "Microsoft.Insights/dataCollectionRuleAssociations"
+  }
+]

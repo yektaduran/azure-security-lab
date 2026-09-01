@@ -1,0 +1,134 @@
+{
+  "value": [
+    {
+      "etag": "\"9a0165b7-0000-0100-0000-6a796f6c0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/AutomationRules/bd3ea972-139e-4854-aa17-8bf558ce8f70",
+      "name": "bd3ea972-139e-4854-aa17-8bf558ce8f70",
+      "properties": {
+        "actions": [
+          {
+            "actionConfiguration": {
+              "classification": null,
+              "classificationComment": null,
+              "classificationReason": null,
+              "labels": null,
+              "owner": null,
+              "severity": "Informational",
+              "status": null
+            },
+            "actionType": "ModifyProperties",
+            "order": 1
+          },
+          {
+            "actionConfiguration": {
+              "classification": "BenignPositive",
+              "classificationComment": "Auto-closed by automation rule: azureuser is a known lab admin account used for detection testing",
+              "classificationReason": "SuspiciousButExpected",
+              "labels": null,
+              "owner": null,
+              "severity": null,
+              "status": "Closed"
+            },
+            "actionType": "ModifyProperties",
+            "order": 2
+          }
+        ],
+        "createdBy": {
+          "email": null,
+          "name": "yekta duran",
+          "objectId": "4c31a12e-095b-4584-8e5b-944fa0b89fed",
+          "userPrincipalName": "yektaduran_hotmail.com#EXT#@yektaduranhotmail.onmicrosoft.com"
+        },
+        "createdTimeUtc": "2026-08-10T06:27:56Z",
+        "displayName": "Tune - Known Admin Account Failed Logons",
+        "lastModifiedBy": {
+          "email": null,
+          "name": "yekta duran",
+          "objectId": "4c31a12e-095b-4584-8e5b-944fa0b89fed",
+          "userPrincipalName": "yektaduran_hotmail.com#EXT#@yektaduranhotmail.onmicrosoft.com"
+        },
+        "lastModifiedTimeUtc": "2026-08-10T06:27:56Z",
+        "order": 1,
+        "triggeringLogic": {
+          "conditions": [
+            {
+              "conditionProperties": {
+                "operator": "Contains",
+                "propertyName": "IncidentRelatedAnalyticRuleIds",
+                "propertyValues": [
+                  "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+                ]
+              },
+              "conditionType": "Property"
+            },
+            {
+              "conditionProperties": {
+                "operator": "Contains",
+                "propertyName": "AccountName",
+                "propertyValues": [
+                  "azureuser"
+                ]
+              },
+              "conditionType": "Property"
+            }
+          ],
+          "isEnabled": true,
+          "triggersOn": "Incidents",
+          "triggersWhen": "Created"
+        }
+      },
+      "type": "Microsoft.SecurityInsights/AutomationRules"
+    },
+    {
+      "etag": "\"9f011262-0000-0100-0000-6a79b7ed0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/AutomationRules/42c9a66c-6297-4159-b5f2-483ed1dfd028",
+      "name": "42c9a66c-6297-4159-b5f2-483ed1dfd028",
+      "properties": {
+        "actions": [
+          {
+            "actionConfiguration": {
+              "logicAppResourceId": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.Logic/workflows/PB-Enrich-FailedLogon-Incident",
+              "tenantId": "dd9ab8bc-26dc-4088-ad9e-120463c09de0"
+            },
+            "actionType": "RunPlaybook",
+            "order": 1
+          }
+        ],
+        "createdBy": {
+          "email": null,
+          "name": "yekta duran",
+          "objectId": "4c31a12e-095b-4584-8e5b-944fa0b89fed",
+          "userPrincipalName": "yektaduran_hotmail.com#EXT#@yektaduranhotmail.onmicrosoft.com"
+        },
+        "createdTimeUtc": "2026-08-10T11:37:17Z",
+        "displayName": "Run - Enrichment Playbook on Failed Logons",
+        "lastModifiedBy": {
+          "email": null,
+          "name": "yekta duran",
+          "objectId": "4c31a12e-095b-4584-8e5b-944fa0b89fed",
+          "userPrincipalName": "yektaduran_hotmail.com#EXT#@yektaduranhotmail.onmicrosoft.com"
+        },
+        "lastModifiedTimeUtc": "2026-08-10T11:37:17Z",
+        "order": 2,
+        "triggeringLogic": {
+          "conditions": [
+            {
+              "conditionProperties": {
+                "operator": "Contains",
+                "propertyName": "IncidentRelatedAnalyticRuleIds",
+                "propertyValues": [
+                  "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/RG-Security-Lab-WestUS2/providers/Microsoft.OperationalInsights/workspaces/LAW-Security-Lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324"
+                ]
+              },
+              "conditionType": "Property"
+            }
+          ],
+          "isEnabled": true,
+          "triggersOn": "Incidents",
+          "triggersWhen": "Created"
+        }
+      },
+      "type": "Microsoft.SecurityInsights/AutomationRules"
+    }
+  ]
+}

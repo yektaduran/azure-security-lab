@@ -1,0 +1,270 @@
+{
+  "value": [
+    {
+      "etag": "\"bc015746-0000-0100-0000-6a771b200000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/rg-security-lab-westus2/providers/Microsoft.OperationalInsights/workspaces/law-security-lab/providers/Microsoft.SecurityInsights/alertRules/BuiltInFusion",
+      "kind": "Fusion",
+      "name": "BuiltInFusion",
+      "properties": {
+        "alertRuleTemplateName": "f71aba3d-28fb-450b-b192-4e76a83015c8",
+        "description": "Microsoft Sentinel uses Fusion, a correlation engine based on scalable machine learning algorithms, to automatically detect multistage attacks by identifying combinations of anomalous behaviors and suspicious activities that are observed at various stages of the kill chain. On the basis of these discoveries, Azure Sentinel generates incidents that would otherwise be very difficult to catch. By design, these incidents are low-volume, high-fidelity, and high-severity, which is why this detection is turned ON by default.\n\nSince Fusion correlates multiple signals from various products to detect advanced multistage attacks, successful Fusion detections are presented as Fusion incidents on the Microsoft Sentinel Incidents page. This rule covers the following detections:\n- Fusion for emerging threats\n- Fusion for ransomware\n- Scenario-based Fusion detections (122 scenarios)\n\nTo enable these detections, we recommend you configure the following data connectors for best results:\n- Out-of-the-box anomaly detections\n- Microsoft Entra ID Protection\n- Azure Defender\n- Azure Defender for IoT\n- Microsoft 365 Defender\n- Microsoft Cloud App Security    \n- Microsoft Defender for Endpoint\n- Microsoft Defender for Identity\n- Microsoft Defender for Office 365\n- Scheduled analytics rules, both built-in and those created by your security analysts. Analytics rules must contain kill-chain (tactics) and entity mapping information in order to be used by Fusion.\n\nFor the full description of each detection that is supported by Fusion, go to https://aka.ms/SentinelFusion.",
+        "displayName": "Advanced Multistage Attack Detection",
+        "enabled": true,
+        "lastModifiedUtc": "2026-08-08T12:03:44.1292094Z",
+        "severity": "High",
+        "tactics": [
+          "Collection",
+          "CommandAndControl",
+          "CredentialAccess",
+          "DefenseEvasion",
+          "Discovery",
+          "Execution",
+          "Exfiltration",
+          "Impact",
+          "InitialAccess",
+          "LateralMovement",
+          "Persistence",
+          "PrivilegeEscalation"
+        ],
+        "techniques": []
+      },
+      "type": "Microsoft.SecurityInsights/alertRules"
+    },
+    {
+      "etag": "\"e1014c49-0000-0100-0000-6a79689b0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/rg-security-lab-westus2/providers/Microsoft.OperationalInsights/workspaces/law-security-lab/providers/Microsoft.SecurityInsights/alertRules/259a6a44-de93-4457-9059-acf090f11324",
+      "kind": "Scheduled",
+      "name": "259a6a44-de93-4457-9059-acf090f11324",
+      "properties": {
+        "alertDetailsOverride": {
+          "alertDescriptionFormat": "Detected {{FailedAttempts}} failed logon attempts for user {{Account}} from {{IpAddress}}",
+          "alertDisplayNameFormat": "Multiple Failed Logons - {{Account}} on {{Computer}}",
+          "alertDynamicProperties": []
+        },
+        "alertRuleTemplateName": null,
+        "customDetails": {
+          "FailedAttempts": "FailedAttempts",
+          "LogonTypes": "LogonTypes"
+        },
+        "description": "Detects multiple failed Windows logon attempts (Event ID 4625) against the same user within a 5-minute period",
+        "displayName": "Multiple Failed Logon Attempts - Windows VM",
+        "enabled": true,
+        "entityMappings": [
+          {
+            "entityType": "Account",
+            "fieldMappings": [
+              {
+                "columnName": "Account",
+                "identifier": "Name"
+              }
+            ]
+          },
+          {
+            "entityType": "Host",
+            "fieldMappings": [
+              {
+                "columnName": "Computer",
+                "identifier": "HostName"
+              }
+            ]
+          },
+          {
+            "entityType": "IP",
+            "fieldMappings": [
+              {
+                "columnName": "IpAddress",
+                "identifier": "Address"
+              }
+            ]
+          }
+        ],
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "incidentConfiguration": {
+          "createIncident": true,
+          "groupingConfiguration": {
+            "enabled": true,
+            "groupByAlertDetails": [],
+            "groupByCustomDetails": [],
+            "groupByEntities": [
+              "Account",
+              "Host"
+            ],
+            "lookbackDuration": "PT5H",
+            "matchingMethod": "Selected",
+            "reopenClosedIncident": true
+          }
+        },
+        "lastModifiedUtc": "2026-08-10T05:58:50.2778192Z",
+        "query": "SecurityEvent\r\n| where EventID == 4625\r\n| summarize\r\n    FailedAttempts = count(),\r\n    FirstAttempt = min(TimeGenerated),\r\n    LastAttempt = max(TimeGenerated),\r\n    LogonTypes = strcat_array(make_set(LogonType), \", \")\r\n    by Account, IpAddress, Computer\r\n| where FailedAttempts >= 5",
+        "queryFrequency": "PT5M",
+        "queryPeriod": "PT5M",
+        "severity": "Medium",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "CredentialAccess"
+        ],
+        "techniques": [
+          "T1110"
+        ],
+        "triggerOperator": "GreaterThan",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.SecurityInsights/alertRules"
+    },
+    {
+      "etag": "\"c601baa9-0000-0100-0000-6a77af5a0000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/rg-security-lab-westus2/providers/Microsoft.OperationalInsights/workspaces/law-security-lab/providers/Microsoft.SecurityInsights/alertRules/329ab5c9-80d0-42f4-94f2-f35e3376b9ef",
+      "kind": "Scheduled",
+      "name": "329ab5c9-80d0-42f4-94f2-f35e3376b9ef",
+      "properties": {
+        "alertDetailsOverride": {
+          "alertDescriptionFormat": "Account {{Account}} had {{FailedCount}} failed logons followed by a successful logon from {{IpAddress}}",
+          "alertDisplayNameFormat": "Possible Brute Force Success - {{Account}} on {{Computer}}",
+          "alertDynamicProperties": []
+        },
+        "alertRuleTemplateName": null,
+        "customDetails": {
+          "FailedCount": "FailedCount",
+          "LogonType": "LogonType",
+          "SuccessTime": "SuccessTime"
+        },
+        "description": "Detects a successful logon (4624) occurring within 30 minutes after 5 or more failed logon attempts (4625) for the same account on the same host. Indicates possible successful brute force or password guessing.",
+        "displayName": "Successful Logon After Multiple Failures - Possible Brute Force Success",
+        "enabled": true,
+        "entityMappings": [
+          {
+            "entityType": "Account",
+            "fieldMappings": [
+              {
+                "columnName": "Account",
+                "identifier": "Name"
+              }
+            ]
+          },
+          {
+            "entityType": "Host",
+            "fieldMappings": [
+              {
+                "columnName": "Computer",
+                "identifier": "HostName"
+              }
+            ]
+          },
+          {
+            "entityType": "IP",
+            "fieldMappings": [
+              {
+                "columnName": "IpAddress",
+                "identifier": "Address"
+              }
+            ]
+          }
+        ],
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "incidentConfiguration": {
+          "createIncident": true,
+          "groupingConfiguration": {
+            "enabled": true,
+            "groupByAlertDetails": [],
+            "groupByCustomDetails": [],
+            "groupByEntities": [],
+            "lookbackDuration": "PT1H",
+            "matchingMethod": "AllEntities",
+            "reopenClosedIncident": false
+          }
+        },
+        "lastModifiedUtc": "2026-08-08T22:36:07.7326101Z",
+        "query": "let failures = SecurityEvent\r\n| where EventID == 4625\r\n| summarize FailedCount = count(), LastFail = max(TimeGenerated)\r\n    by Account, Computer\r\n| where FailedCount >= 5;\r\nlet successes = SecurityEvent\r\n| where EventID == 4624\r\n| project SuccessTime = TimeGenerated, Account, Computer, LogonType, IpAddress;\r\nfailures\r\n| join kind=inner successes on Account, Computer\r\n| where SuccessTime > LastFail and SuccessTime < LastFail + 30m\r\n| project Account, Computer, IpAddress, FailedCount, LastFail, SuccessTime, LogonType",
+        "queryFrequency": "PT10M",
+        "queryPeriod": "PT1H",
+        "severity": "High",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "InitialAccess",
+          "CredentialAccess"
+        ],
+        "techniques": [
+          "T1078",
+          "T1110"
+        ],
+        "triggerOperator": "GreaterThan",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.SecurityInsights/alertRules"
+    },
+    {
+      "etag": "\"b500547c-0000-0100-0000-6a7f8e060000\"",
+      "id": "/subscriptions/d0ef3c7a-ba61-4f20-ae6d-c952e94459c0/resourceGroups/rg-security-lab-westus2/providers/Microsoft.OperationalInsights/workspaces/law-security-lab/providers/Microsoft.SecurityInsights/alertRules/7b2ed346-f7ee-4580-9205-67d24727b9a3",
+      "kind": "Scheduled",
+      "name": "7b2ed346-f7ee-4580-9205-67d24727b9a3",
+      "properties": {
+        "alertRuleTemplateName": null,
+        "description": "Detects creation of an interactive local account, or an existing account being added to a privileged group, on Linux hosts. MITRE T1136.001 and T1098",
+        "displayName": "Linux - Local Account Persistence",
+        "enabled": true,
+        "entityMappings": [
+          {
+            "entityType": "Account",
+            "fieldMappings": [
+              {
+                "columnName": "Account",
+                "identifier": "Name"
+              }
+            ]
+          },
+          {
+            "entityType": "Host",
+            "fieldMappings": [
+              {
+                "columnName": "Computer",
+                "identifier": "HostName"
+              }
+            ]
+          }
+        ],
+        "eventGroupingSettings": {
+          "aggregationKind": "SingleAlert"
+        },
+        "incidentConfiguration": {
+          "createIncident": true,
+          "groupingConfiguration": {
+            "enabled": true,
+            "groupByAlertDetails": [],
+            "groupByCustomDetails": [],
+            "groupByEntities": [
+              "Account",
+              "Host"
+            ],
+            "lookbackDuration": "PT5H",
+            "matchingMethod": "Selected",
+            "reopenClosedIncident": true
+          }
+        },
+        "lastModifiedUtc": "2026-08-14T21:52:04.8387509Z",
+        "query": "let lookback = 1h;\r\nlet AccountCreation =\r\n    Syslog\r\n    | where TimeGenerated > ago(lookback)\r\n    | where ProcessName == \"useradd\"\r\n    | where SyslogMessage startswith \"new user:\"\r\n    | extend NewAccount = extract(@\"name=([^,]+)\", 1, SyslogMessage)\r\n    | extend NewUid     = toint(extract(@\"UID=(\\d+)\", 1, SyslogMessage))\r\n    | extend NewShell   = extract(@\"shell=([^,]+)\", 1, SyslogMessage)\r\n    | where NewUid >= 1000\r\n        or (NewShell !endswith \"nologin\" and NewShell != \"/bin/false\")\r\n    | extend Activity = \"Interactive account created\",\r\n             Detail   = strcat(\"account=\", NewAccount, \" uid=\", NewUid, \" shell=\", NewShell)\r\n    | project TimeGenerated, Computer, Account = NewAccount, Activity, Detail, SyslogMessage;\r\nlet PrivilegedGroupChange =\r\n    Syslog\r\n    | where TimeGenerated > ago(lookback)\r\n    | where ProcessName in (\"usermod\", \"gpasswd\")\r\n    | where SyslogMessage startswith \"add '\"\r\n    | where SyslogMessage !contains \"shadow group\"\r\n    | extend Account = extract(@\"add '([^']+)'\", 1, SyslogMessage)\r\n    | extend TargetGroup = extract(@\"to group '([^']+)'\", 1, SyslogMessage)\r\n    | where TargetGroup in (\"sudo\", \"admin\", \"wheel\", \"root\", \"adm\")\r\n    | extend Activity = \"Account added to a privileged group\",\r\n             Detail   = strcat(\"account=\", Account, \" group=\", TargetGroup)\r\n    | project TimeGenerated, Computer, Account, Activity, Detail, SyslogMessage;\r\nAccountCreation\r\n| union PrivilegedGroupChange\r\n| order by TimeGenerated desc",
+        "queryFrequency": "PT1H",
+        "queryPeriod": "PT1H",
+        "severity": "Medium",
+        "suppressionDuration": "PT5H",
+        "suppressionEnabled": false,
+        "tactics": [
+          "PrivilegeEscalation",
+          "Persistence"
+        ],
+        "techniques": [
+          "T1098",
+          "T1136"
+        ],
+        "triggerOperator": "GreaterThan",
+        "triggerThreshold": 0
+      },
+      "type": "Microsoft.SecurityInsights/alertRules"
+    }
+  ]
+}
