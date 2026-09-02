@@ -108,26 +108,8 @@ what the platform can see. Same lesson as the orphaned resource group finding (A
 
 ## Known gaps
 
-**Change control is unenforced.** A branch ruleset requiring pull requests and
-passing checks is configured but not applied — GitHub does not enforce rulesets
-on private repositories under this plan. Direct pushes to `main` remain possible.
-The intent is currently met by operator discipline alone.
-
-**Transitive dependencies are unpinned.** `requirements.txt` pins every direct
-dependency, but packages pulled in indirectly — `azure-core`, `msal` and others —
-float. A lock file or `pip-tools` would close this properly.
-
-**Vulnerability management is not covered here.** These baselines address
-misconfiguration. Vulnerability assessment on the Azure side requires Defender
-for Servers, which is a paid plan and deliberately left disabled; that work is
-being done separately.
-
-**Sentinel incidents do not notify anyone.** Defender for Cloud alerts reach an
-email address; Sentinel incidents are only visible in the portal. The Logic Apps
-email connectors require a work or school account, which this tenant does not
-have. An Azure Monitor action group over the `SecurityIncident` table would work,
-but sits outside the Sentinel automation chain.
-
-**Two controls are unassessed.** MFA enforcement cannot be evidenced until Entra
-ID sign-in logs are forwarded to the workspace, and subnet NSG association has
-not been checked.
+- AzurePolicyforLinux (Guest Configuration) is Failed on vm-lnx-lab-01, so Azure cannot attest the six Linux hardening controls.
+- File Integrity Monitoring produces no data; the pending MMA-to-MDE FIM migration is the likely blocker. Not pursued before teardown.
+- MFA enforcement and subnet-NSG association remain unassessed (the former needs Entra ID sign-in logs in the workspace).
+- AZ-WIN-004 (SMBv1) and AZ-WIN-005 (local Administrators membership) are specified but unwritten.
+- powershell/ checks run locally, not in the pipeline.
