@@ -52,16 +52,17 @@ function Test-WindowsAuditPolicy {
     $title     = 'Logon auditing produces the events the detections depend on'
     # Per-subcategory requirements. Logoff and Special Logon have no meaningful
     # failure event, so demanding Failure there produces a false positive —
-    # which the first version of this check duly produced.
-    $required = @{
+    # which the first version of this check duly produced. Account Lockout is
+    # the mirror image: it only emits failure events (4625), so CIS asks for
+    # Failure alone and demanding Success repeats the same bug backwards.
+    $required = [ordered]@{
         'Logon'           = @('Success', 'Failure')
         'Logoff'          = @('Success')
-        'Account Lockout' = @('Success', 'Failure')
+        'Account Lockout' = @('Failure')
         'Special Logon'   = @('Success')
     }
     $inner = @'
-$required = 'Logon','Logoff','Account Lockout','Special Logon'
-$rows = auditpol /get /subcategory:"Logon","Logoff","Account Lockout","Special Logon" /r |
+$rows = auditpol /get /subcategory:"Logon,Logoff,Account Lockout,Special Logon" /r |
     ConvertFrom-Csv
 $rows |
     Select-Object @{n='Subcategory';e={$_.Subcategory}},
@@ -81,17 +82,26 @@ $rows |
     $settings = $out.StdOut | ConvertFrom-Json
 
     $problems = @()
-    $evidence = @{}
+    $evidence = [ordered]@{}
 
-    foreach ($item in $settings) {
-      $evidence[$item.Subcategory] = $item.Setting
+    # Iterate the requirements, not the returned rows: a subcategory that
+    # auditpol fails to return must surface as a problem, not pass silently.
+    $lookup = @{}
+    foreach ($item in $settings) { $lookup[$item.Subcategory] = $item.Setting }
 
-      $needs = $required[$item.Subcategory]
-      $missing = $needs | Where-Object { $item.Setting -notlike "*$_*" }
+    foreach ($sub in $required.Keys) {
+        $actual = $lookup[$sub]
+        $evidence[$sub] = "required=$($required[$sub] -join ' and '); actual=$actual"
 
-      if ($missing) {
-          $problems += "$($item.Subcategory) is '$($item.Setting)', needs $($needs -join ' and ')"
-      }
+        if (-not $actual) {
+            $problems += "$sub was not returned by auditpol"
+            continue
+        }
+
+        $missing = $required[$sub] | Where-Object { $actual -notlike "*$_*" }
+        if ($missing) {
+            $problems += "$sub is '$actual', needs $($required[$sub] -join ' and ')"
+        }
     }
 
     if ($problems.Count -eq 0) {
