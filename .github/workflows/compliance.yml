@@ -7,8 +7,6 @@ on:
   pull_request:
     branches: [main]
     paths: ['python/**', 'baselines/**', '.github/workflows/compliance.yml']
-  schedule:
-    - cron: '0 6 * * *'     # daily drift detection
   workflow_dispatch:
 
 permissions:
