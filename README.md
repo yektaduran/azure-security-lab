@@ -110,10 +110,12 @@ Three score values, zero configuration changes on the resources themselves:
 | 2026-08-15 | 56% | Baseline on the free tier |
 | 2026-08-17 | 51% | Defender for Servers Plan 2 enabled: more assessment coverage surfaced more findings |
 | 2026-09-01 | 68% | VMs deallocated for days: assessments went stale or NotApplicable, score drifted up |
+| 2026-09-03 | 58% | VMs restarted for the final session: assessments re-ran and coverage returned |
 
-More visibility lowered the score; less signal raised it. The score is a function
-of what the platform can see. Same lesson as the orphaned resource group finding
-(AZ-GOV-001).
+Four readings, no configuration change on any resource. The score fell when
+assessment coverage grew, rose when the machines went quiet, and fell again when
+they came back. It measures what the platform can currently see, not how secure
+anything is. Same lesson as the orphaned resource group finding (AZ-GOV-001).
 
 ---
 
