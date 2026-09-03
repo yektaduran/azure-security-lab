@@ -6,12 +6,17 @@ that verify them and the evidence required to demonstrate compliance.
 ## Scope
 
 Everything in the `RG-Security-Lab-WestUS2` resource group of the lab
-subscription: Windows Server 2025 and Ubuntu 22.04 virtual machines, 
+subscription: Windows Server 2025 and Ubuntu 22.04 virtual machines,
 Log Analytics workspace with Microsoft Sentinel, the Terraform state storage
 account, and the identity configuration governing access to all of them.
 Controls in the `AZ-GOV` family are the exception: they are subscription-scoped
 by design, because a resource outside the managed resource group is precisely
 what a resource-group-scoped baseline cannot see.
+
+Most controls evaluate the Azure control plane. The `AZ-LNX` and `AZ-WIN`
+families evaluate the inside of a host instead — the former through Ansible,
+the latter through `Invoke-AzVMRunCommand`. A control plane baseline cannot see
+whether SSH accepts passwords or whether Windows is still writing 4625.
 
 ## Control format
 
@@ -31,6 +36,15 @@ at all, and one without an evidence requirement cannot survive an audit.
 Accepted deviations are recorded rather than hidden. A baseline whose every
 control shows a clean pass is usually a baseline that was written after the
 fact to match whatever the environment already did.
+
+Four status values carry distinct meanings and are not interchangeable:
+
+| Status | Meaning |
+|---|---|
+| Pass | The check ran against the environment and the resource met the control |
+| Deviation | The resource does not meet the control, and the gap is documented and accepted |
+| Not assessed | No check exists yet, or the evidence needed to run one is unavailable |
+| Not validated | A check exists but has never been observed both passing and failing, so it is not yet a working control |
 
 ## Control index
 
@@ -63,6 +77,9 @@ fact to match whatever the environment already did.
 | AZ-LNX-004 | Out-of-band recovery exists without weakening the host | Pass |
 | AZ-LNX-005 | Host firewall enforced independently of the NSG | Pass |
 | AZ-LNX-006 | Host activity recorded for investigation | Pass |
+| AZ-WIN-001 | Logon auditing produces the events the detections depend on | Not validated |
+| AZ-WIN-002 | Defender real-time protection is enabled | Not validated |
+| AZ-WIN-003 | Windows Firewall enabled on all three profiles | Not validated |
 | AZ-GOV-001 | All resource groups in the subscription are managed by Terraform | Pass |
 | AZ-AI-001 | Generated code is validated against the environment | Pass |
 | AZ-AI-002 | Generated facts are confirmed at their source | Pass |
@@ -78,6 +95,7 @@ fact to match whatever the environment already did.
 - `azure-monitoring.md` — logging, detection, retention
 - `azure-iac.md` — Terraform and pipeline security
 - `linux.md` — Linux host hardening (SSH, kernel, firewall, auditing)
+- `windows.md` — Windows host hardening (audit policy, Defender, firewall)
 - `azure-governance.md` — subscription-wide resource ownership
 - `ai-assisted-work.md` — use of language models in producing this repository
 

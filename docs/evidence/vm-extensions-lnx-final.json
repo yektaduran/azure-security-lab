@@ -1,0 +1,22 @@
+[
+  {
+    "name": "AzureMonitorLinuxAgent",
+    "publisher": "Microsoft.Azure.Monitor",
+    "state": "Succeeded"
+  },
+  {
+    "name": "AzurePolicyforLinux",
+    "publisher": "Microsoft.GuestConfiguration",
+    "state": "Failed"
+  },
+  {
+    "name": "enablevmaccess",
+    "publisher": "Microsoft.OSTCExtensions",
+    "state": "Succeeded"
+  },
+  {
+    "name": "MDE.Linux",
+    "publisher": "Microsoft.Azure.AzureDefenderForServers",
+    "state": "Succeeded"
+  }
+]

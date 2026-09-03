@@ -1,0 +1,22 @@
+[
+  {
+    "name": "AzureGuestProxyAgentExtension",
+    "publisher": "Microsoft.CPlat.ProxyAgent",
+    "state": "Succeeded"
+  },
+  {
+    "name": "AzureMonitorWindowsAgent",
+    "publisher": "Microsoft.Azure.Monitor",
+    "state": "Succeeded"
+  },
+  {
+    "name": "AzurePolicyforWindows",
+    "publisher": "Microsoft.GuestConfiguration",
+    "state": "Succeeded"
+  },
+  {
+    "name": "MDE.Windows",
+    "publisher": "Microsoft.Azure.AzureDefenderForServers",
+    "state": "Succeeded"
+  }
+]

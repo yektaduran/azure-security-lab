@@ -3,9 +3,15 @@
 Infrastructure as code, configuration baselines, automated compliance checking
 and detection engineering — built end to end on a live Azure subscription.
 
-Every control in this repository was written against a real environment, checked
-by code that runs on a schedule, and validated by making it fail before trusting
-it to pass.
+Controls here were written against a real environment and checked by code that
+runs on a schedule. Most were validated by making them fail before trusting them
+to pass; the three that were not are recorded as unvalidated rather than passed,
+and `baselines/windows.md` says why.
+
+> **The environment was torn down on 3 September 2026** when the trial
+> subscription expired. Everything in `docs/evidence/` was captured from the live
+> subscription before `terraform destroy`. The code, baselines and detections
+> remain; the resources they describe no longer exist.
 
 ---
 
@@ -15,9 +21,11 @@ it to pass.
 |---|---|
 | `terraform/` | Seventeen Azure resources under management, deployed through a GitHub Actions pipeline authenticating over OIDC with no stored secret. Every pull request runs `terraform fmt -check`, `terraform validate` and `tfsec` before producing a plan. |
 | `ansible/` | Four Linux hardening roles — SSH, kernel parameters, auditd, host firewall — applied from a WSL control node. |
-| `baselines/` | 28 configuration controls across eight documents, each in a fixed six-field format: rationale, applies to, check, remediation, evidence, status. |
+| `baselines/` | 35 configuration controls across ten documents, each in a fixed six-field format: rationale, applies to, check, remediation, evidence, status. |
 | `python/` | A compliance checker that evaluates the live subscription against those controls and writes timestamped JSON and HTML evidence. |
+| `powershell/` | Host-level checks that execute inside a Windows VM over `Invoke-AzVMRunCommand` — no RDP, no open port, no account on the machine. Covers what a control-plane check structurally cannot see. |
 | `kql/` | Sentinel detection queries, each carrying its MITRE mapping, tuning rationale and validation record. |
+| `docs/evidence/` | Exports captured from the live subscription at teardown: Defender assessments, Secure Score, plan configuration, VM extensions, final Terraform state. |
 | `.github/workflows/` | Two pipelines: `terraform.yml` validates and plans infrastructure changes with apply behind a manual trigger, `compliance.yml` runs the baseline checks. |
 
 ## Environment
@@ -33,7 +41,7 @@ the backend runs entirely on Entra ID authentication.
 
 ```bash
 cd python
-pip install -r requirements.txt
+pip install -r requirements.txt -c constraints.txt
 export AZURE_SUBSCRIPTION_ID="<subscription-id>"
 python run_checks.py
 ```
@@ -52,7 +60,8 @@ Only `fail` and `error` break the build. A check that could not run has proven
 nothing, so it is never treated as a pass.
 
 The checks run on every push and pull request touching `python/`, `baselines/` or
-the workflow itself, and daily at 06:00 UTC. Reports are retained as build artifacts for 90 days.
+the workflow itself, and daily at 06:00 UTC. Reports are retained as build
+artifacts for 90 days.
 
 ---
 
@@ -102,14 +111,27 @@ Three score values, zero configuration changes on the resources themselves:
 | 2026-08-17 | 51% | Defender for Servers Plan 2 enabled: more assessment coverage surfaced more findings |
 | 2026-09-01 | 68% | VMs deallocated for days: assessments went stale or NotApplicable, score drifted up |
 
-More visibility lowered the score; less signal raised it. The score is a function of
-what the platform can see. Same lesson as the orphaned resource group finding (AZ-GOV-001).
+More visibility lowered the score; less signal raised it. The score is a function
+of what the platform can see. Same lesson as the orphaned resource group finding
+(AZ-GOV-001).
+
 ---
 
 ## Known gaps
 
-- AzurePolicyforLinux (Guest Configuration) is Failed on vm-lnx-lab-01, so Azure cannot attest the six Linux hardening controls.
-- File Integrity Monitoring produces no data; the pending MMA-to-MDE FIM migration is the likely blocker. Not pursued before teardown.
-- MFA enforcement and subnet-NSG association remain unassessed (the former needs Entra ID sign-in logs in the workspace).
-- AZ-WIN-004 (SMBv1) and AZ-WIN-005 (local Administrators membership) are specified but unwritten.
-- powershell/ checks run locally, not in the pipeline.
+- **AZ-WIN-001 to AZ-WIN-003 are written but never executed against a host.** The
+  guest-side runs were scheduled for the final day of the lab and West US 2 could
+  not allocate the VM size that morning. They are recorded as `Not validated`,
+  not as passing — the distinction AZ-AI-001 exists to enforce, applied to code
+  that was itself model-assisted.
+- AZ-WIN-004 (SMBv1) and AZ-WIN-005 (local Administrators membership) are
+  specified but unwritten.
+- `powershell/` checks run locally and are not wired into any pipeline.
+- AzurePolicyforLinux (Guest Configuration) is Failed on vm-lnx-lab-01, so Azure
+  cannot attest the six Linux hardening controls.
+- File Integrity Monitoring produces no data; the pending MMA-to-MDE FIM
+  migration is the likely blocker. Not pursued before teardown.
+- MFA enforcement and subnet-NSG association remain unassessed (the former needs
+  Entra ID sign-in logs in the workspace).
+- Branch protection and environment approval are configured but unenforced —
+  GitHub Free does not apply rulesets to private repositories.
